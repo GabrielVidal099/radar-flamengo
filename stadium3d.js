@@ -122,7 +122,7 @@ function tubo(a, b, y, raio, cor) {
   return new THREE.Mesh(new THREE.TubeGeometry(new THREE.CatmullRomCurve3(pts, true), 240, raio, 6, true), new THREE.MeshStandardMaterial({ color: cor, roughness: 0.6 }));
 }
 
-function montarEstadio(cena, logo) {
+function montarEstadio(cena, logo, nSetores) {
   const g = new THREE.Group(); cena.add(g);
   // chão e esplanada
   const chao = new THREE.Mesh(new THREE.CircleGeometry(900, 64), new THREE.MeshStandardMaterial({ color: 0x140b0e, roughness: 1 }));
@@ -173,8 +173,9 @@ function montarEstadio(cena, logo) {
   const pg = []; for (let j = 0; j < 120; j++) { const p = superficie(P, j / 120 * 2 * Math.PI); pg.push(new THREE.Vector3(p[0], 0.3, p[2])); }
   g.add(laco(pg, 0xff3b55, 0.55));
   const div = [];
-  for (let k = 0; k < 6; k++) {
-    const th = (-120 + 60 * k) * DEG;
+  const SEG = 360 / nSetores;
+  for (let k = 0; k < nSetores; k++) {
+    const th = (-90 - SEG / 2 + SEG * k) * DEG;
     for (let i = 0; i < 40; i++) {
       const a = superficie(P + (1 - P) * i / 40, th), b = superficie(P + (1 - P) * (i + 1) / 40, th);
       div.push(new THREE.Vector3(a[0], a[1] + 0.6, a[2]), new THREE.Vector3(b[0], b[1] + 0.6, b[2]));
@@ -182,7 +183,7 @@ function montarEstadio(cena, logo) {
   }
   g.add(new THREE.LineSegments(new THREE.BufferGeometry().setFromPoints(div), new THREE.LineBasicMaterial({ color: 0xff3b55, transparent: true, opacity: 0.4 })));
   RING_HOURS.forEach(function (r) {
-    const p = superficie(r[0], -120 * DEG), s = rotulo(r[1], 36, 9, "#e6d9dc", 50);
+    const p = superficie(r[0], (-90 - SEG / 2) * DEG), s = rotulo(r[1], 36, 9, "#e6d9dc", 50);
     s.position.set(p[0], p[1] + 4, p[2]); g.add(s);
   });
   return g;
@@ -208,13 +209,14 @@ export function createStadium(host, opcoes) {
 
   let logo = null;
   if (op.logoUrl) { logo = new Image(); logo.src = op.logoUrl; }
-  const est = montarEstadio(cena, logo);
+  const nSet = Math.max(2, (op.setores || []).length || 6), SEG = 360 / nSet;
+  const est = montarEstadio(cena, logo, nSet);
 
   // rótulos dos setores, acima da cobertura
   const setores = [];
   (op.setores || []).forEach(function (nome, i) {
-    const th = (-90 + 60 * i) * DEG, s = rotulo(nome.toUpperCase(), 62, 15.5, "#f4ecec", 52);
-    s.position.set(Math.cos(th) * 182, 58, Math.sin(th) * 160); s.userData.setor = i; cena.add(s); setores.push(s);
+    const th = (-90 + SEG * i) * DEG, s = rotulo(nome.toUpperCase(), 62, 15.5, "#f4ecec", 52);
+    s.position.set(Math.cos(th) * 208, 58, Math.sin(th) * 188); s.userData.setor = i; cena.add(s); setores.push(s);
   });
 
   // câmera orbital
@@ -256,7 +258,7 @@ export function createStadium(host, opcoes) {
     while (marcas.children.length) marcas.remove(marcas.children[0]);
     alvos.length = 0; fresco.length = 0; lista = itens || [];
     lista.forEach(function (it) {
-      const seg = 60, th = (-90 - 30 + it.cat * seg + seg * (0.15 + 0.7 * it.frac)) * DEG;
+      const th = (-90 - SEG / 2 + it.cat * SEG + SEG * (0.15 + 0.7 * it.frac)) * DEG;
       const p = superficie(Math.min(1, Math.max(0.04, it.rho)), th);
       const sobCobertura = it.rho > 0.9, topo = sobCobertura ? 56 : p[1] + (it.rho <= P ? 15 : 13);
       const m = new THREE.Group(); m.position.set(p[0], p[1], p[2]);

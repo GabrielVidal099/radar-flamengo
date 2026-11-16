@@ -15,11 +15,12 @@ const JANELA_HORAS = 26;
 // Fontes preferidas, da mais para a menos confiável. Quem não está na lista vem depois.
 const PREFERIDAS = ["ge", "UOL", "LANCE!", "O Dia", "ESPN Brasil", "Coluna do Fla", "Clube de Regatas do Flamengo", "Terra", "CNN Brasil", "Gazeta Esportiva", "G1", "O Globo", "Extra", "Trivela", "Band", "Metrópoles"];
 const FONTES_FORA = /instagram|facebook|youtube|tiktok|threads|x\.com|twitter|^flamengo\.com\.br$|onefootball|msn|reddit/i;
+// Futebol feminino e categorias de base ficam de fora do radar.
+const FORA_DO_ESCOPO = /feminin|\bsub[- ]?\d{2}\b|copinha|juvenil|maric[aá]|cristiane|garotos do ninho|brajuv|pão de queijo|projeto tênis|flamengo open|categorias? de base|time de base|\bbase\b.*\b(sub|ninho)\b/i;
 const TITULO_FORA = /palpite|aposta|odds|\bbet\b|progn[oó]stico|cupom|promo[cç][aã]o|achados & perdidos|h[aá] \d+ anos|\bvote\b|enquete|\bquiz\b|veja imagens|melhores momentos|ao vivo/i;
 const JORNALISTAS = ["Venê Casagrande", "Pablo Raphael", "Mauro Cezar", "Julio Miguel Neto", "Renan Moura", "Fabrizio Romano", "Bruno Andrade"];
 
 const REGRAS = [
-  ["feminino", /feminin|sub-?\d\d|\bbase\b|copinha|juvenil de futebol|garotos do ninho/i],
   ["outros", /basquete|v[oô]lei|nata[cç][aã]o|\bremo\b|jud[oô]|gin[aá]stica|\bnbb\b|polo aqu[aá]tico|futsal|e-?sports|atletismo|beach soccer|liga sul-americana/i],
   ["jogo", / x |escala[cç][aã]o|desfalque|onde assistir|ingresso|rodada|arbitragem|[aá]rbitro|relacionados|pr[eé]-jogo|vence|venceu|empata|perde|derrota|vit[oó]ria|goleia|tabela|classifica[cç][aã]o/i],
   ["mercado", /contrat|refor[cç]o|proposta|interesse|negocia|mercado|sondag|renova|venda|vender|empr[eé]stimo|\balvo|oferta|multa|janela|sa[ií]da de/i],
@@ -70,10 +71,10 @@ const candidatos = itens
   .filter((n) => n.titulo && /^https:\/\//.test(n.url) && !isNaN(n.data))
   .filter((n) => agora - n.data < JANELA_HORAS * 36e5 && n.data <= agora)
   .filter((n) => /flamengo|meng[aã]o|rubro-negro/i.test(n.titulo))
-  .filter((n) => !FONTES_FORA.test(n.fonte) && !TITULO_FORA.test(n.titulo))
+  .filter((n) => !FONTES_FORA.test(n.fonte) && !TITULO_FORA.test(n.titulo) && !FORA_DO_ESCOPO.test(n.titulo))
   .sort((a, b) => peso(a.fonte) - peso(b.fonte) || b.data - a.data);
 
-const lista = [...base.noticias];
+const lista = base.noticias.filter((x) => x.categoria !== "feminino" && !FORA_DO_ESCOPO.test(x.titulo));
 const novas = [];
 for (const n of candidatos) {
   if (novas.length >= MAX_NOVAS) break;

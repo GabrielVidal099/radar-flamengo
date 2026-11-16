@@ -23,11 +23,14 @@ jobs:
           node-version: 22
       - name: Buscar notícias
         run: node scripts/atualizar.mjs
+      - name: Buscar jogos, tabela e elenco
+        run: node scripts/dados.mjs
+        continue-on-error: true
       - name: Salvar
         run: |
           git config user.name "radar-bot"
           git config user.email "radar-bot@users.noreply.github.com"
-          git add noticias.json
+          git add noticias.json dados
           git diff --cached --quiet && exit 0
           git commit -m "Atualiza notícias"
           git push

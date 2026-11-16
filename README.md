@@ -6,7 +6,10 @@ Projeto de torcedor, sem vínculo com o Clube de Regatas do Flamengo. As manchet
 
 ## Como funciona
 
+O app tem cinco telas: Início (próximo jogo, últimos resultados, tabela, artilheiros e notícias), Jogos (próximos e resultados, com página de cada partida: resumo, escalações, estatísticas e confronto), Tabela do Brasileirão, Elenco (com ficha de cada jogador) e Radar de notícias em 3D.
+
 - `index.html` é o app. Ele lê `noticias.json` e desenha o radar e o feed.
+- `scripts/dados.mjs` busca jogos, tabela, elenco e detalhes das partidas em endpoints públicos da ESPN e grava em `dados/`. Os escudos dos times vêm da CDN da ESPN.
 - `scripts/atualizar.mjs` busca as manchetes no Google Notícias, descarta repetidas e redes sociais, classifica por editoria e regrava `noticias.json`. Notícias com mais de 10 dias saem.
 - `.github/workflows/atualizar.yml` roda esse script a cada 30 minutos no GitHub Actions.
 - `sw.js` e `manifest.webmanifest` deixam o app instalável e abrindo sem internet com as últimas notícias salvas.
