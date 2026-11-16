@@ -1,5 +1,5 @@
 // Guarda o app para abrir sem internet. As notícias sempre tentam a rede primeiro.
-const CACHE = "radar-v1";
+const CACHE = "radar-v2";
 const CASCA = ["./", "index.html", "noticias.json", "manifest.webmanifest", "icons/icon-192.png", "icons/icon-512.png"];
 
 self.addEventListener("install", (e) => {

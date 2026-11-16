@@ -63,6 +63,11 @@ body {
 }
 
 /* Cabeçalho */
+.marca { display: flex; align-items: center; gap: 14px; min-width: 0; }
+.escudo { display: none; width: 56px; height: 56px; object-fit: contain; flex: none; }
+.selo { flex: none; width: 56px; height: 56px; }
+.tem-escudo .escudo { display: block; }
+.tem-escudo .selo { display: none; }
 .top { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 12px 24px; }
 h1 {
   margin: 0; font-family: var(--display); font-stretch: 78%; font-weight: 900;
@@ -81,6 +86,9 @@ h1 span { color: var(--red); }
 .radar { background: var(--radar-bg); border-radius: 6px; padding: 8px; }
 .radar svg { display: block; width: 100%; height: auto; }
 .ring { fill: none; stroke: var(--radar-line); }
+.rim { fill: none; stroke: rgba(255, 235, 238, .42); stroke-width: 2.5; }
+.roof { fill: none; stroke: rgba(255, 235, 238, .22); stroke-width: 5; stroke-dasharray: 1.5 4.5; }
+.pitch-line { fill: none; stroke: rgba(255, 255, 255, .42); stroke-width: 1; }
 .spoke { stroke: var(--radar-line); }
 .rlabel { fill: var(--radar-text); font-family: var(--mono); font-size: 9px; opacity: .75; }
 .slabel { fill: var(--radar-text); font-family: var(--display); font-stretch: 80%; font-weight: 700; font-size: 11.5px; letter-spacing: .08em; cursor: pointer; }
@@ -139,7 +147,20 @@ h1 span { color: var(--red); }
 <div class="wrap">
   <header>
     <div class="top">
-      <h1>Radar do <span>Flamengo</span></h1>
+      <div class="marca">
+        <img class="escudo" id="escudo" alt="" width="56" height="56">
+        <svg class="selo" viewBox="0 0 56 56" width="56" height="56" aria-hidden="true">
+          <defs><clipPath id="selo-clip"><circle cx="28" cy="28" r="25"/></clipPath></defs>
+          <g clip-path="url(#selo-clip)">
+            <rect width="56" height="56" fill="#111"/>
+            <rect y="3" width="56" height="8.4" fill="#c20e2b"/><rect y="19.4" width="56" height="8.4" fill="#c20e2b"/>
+            <rect y="35.8" width="56" height="8.4" fill="#c20e2b"/><rect y="52.2" width="56" height="8.4" fill="#c20e2b"/>
+          </g>
+          <circle cx="28" cy="28" r="25" fill="none" stroke="#f4ecec" stroke-width="2.5"/>
+          <circle cx="28" cy="28" r="6" fill="#f4ecec"/><circle cx="28" cy="28" r="2.4" fill="#c20e2b"/>
+        </svg>
+        <h1>Radar do <span>Flamengo</span></h1>
+      </div>
       <div class="status"><span class="dot" id="dot"></span><span id="status">Buscando notícias…</span></div>
     </div>
     <div class="stripes" aria-hidden="true"></div>
@@ -148,9 +169,9 @@ h1 span { color: var(--red); }
   <div class="grid">
     <aside class="radar-col">
       <div class="radar">
-        <svg id="radar" viewBox="-225 -225 450 450" role="img" aria-label="Radar das notícias: quanto mais perto do centro, mais recente"></svg>
+        <svg id="radar" viewBox="-225 -180 450 360" role="img" aria-label="Radar das notícias em forma de Maracanã visto de cima: quanto mais perto do campo, mais recente"></svg>
       </div>
-      <p class="legend">Cada ponto é uma notícia. No centro, as de agora; na borda, as de 7 dias atrás. Toque em um ponto para ir até ela.</p>
+      <p class="legend">O Maracanã visto de cima. Cada ponto é uma notícia: no gramado, as das últimas 6 horas; nas arquibancadas, as de até 24 h, 3 e 7 dias. Toque em um ponto para ir até ela.</p>
     </aside>
 
     <main>
@@ -175,7 +196,7 @@ h1 span { color: var(--red); }
     { id: "mercado", nome: "Mercado" },
     { id: "elenco", nome: "Elenco" },
     { id: "bastidores", nome: "Bastidores" },
-    { id: "feminino", nome: "Feminino e base" },
+    { id: "feminino", nome: "Feminino e base", curto: "Fem. e base" },
     { id: "outros", nome: "+ Esportes" }
   ];
   var R = 165, DIAS = 7, SVGNS = "http://www.w3.org/2000/svg";
@@ -219,26 +240,49 @@ h1 span { color: var(--red); }
   function desenharRadar(vis) {
     var s = $("radar"); s.textContent = "";
     var seg = 360 / CATS.length;
+    // Maracanã visto de cima: campo no centro (até 6 h), arquibancada inferior (até 24 h),
+    // intermediária (até 3 dias) e superior (até 7 dias).
+    var K = 0.78;
+    var bandas = [[7, "#1c1114"], [3, "#251519"], [1, "#2f1a20"], [0.25, "#143326"]];
+    bandas.forEach(function (b) {
+      s.appendChild(svg("ellipse", { rx: escala(b[0]), ry: escala(b[0]) * K, fill: b[1] }));
+    });
+    s.appendChild(svg("ellipse", { class: "roof", rx: R + 9, ry: (R + 9) * K }));
+    [1, 3].forEach(function (d) { s.appendChild(svg("ellipse", { class: "ring", rx: escala(d), ry: escala(d) * K })); });
+    s.appendChild(svg("ellipse", { class: "rim", rx: R, ry: R * K }));
+    // gramado
+    var pw = 86, ph = 54;
+    s.appendChild(svg("rect", { class: "pitch-line", x: -pw / 2, y: -ph / 2, width: pw, height: ph }));
+    s.appendChild(svg("line", { class: "pitch-line", x1: 0, y1: -ph / 2, x2: 0, y2: ph / 2 }));
+    s.appendChild(svg("circle", { class: "pitch-line", r: 8 }));
+    [-1, 1].forEach(function (lado) {
+      s.appendChild(svg("rect", { class: "pitch-line", x: lado < 0 ? -pw / 2 : pw / 2 - 14, y: -13, width: 14, height: 26 }));
+    });
+    s.appendChild(svg("ellipse", { class: "ring", rx: escala(0.25), ry: escala(0.25) * K }));
     [0.25, 1, 3, 7].forEach(function (d) {
-      var r = escala(d);
-      s.appendChild(svg("circle", { class: "ring", r: r }));
-      var t = svg("text", { class: "rlabel", x: 4, y: -r + 11 }); t.textContent = d < 1 ? "6 h" : d === 1 ? "24 h" : d + " dias"; s.appendChild(t);
+      var t = svg("text", { class: "rlabel", x: 4, y: -escala(d) * K + 11 });
+      t.textContent = d < 1 ? "6 h" : d === 1 ? "24 h" : d + " dias"; s.appendChild(t);
     });
     CATS.forEach(function (c, i) {
       var a = (-90 - seg / 2 + i * seg) * Math.PI / 180;
-      s.appendChild(svg("line", { class: "spoke", x1: 0, y1: 0, x2: R * Math.cos(a), y2: R * Math.sin(a) }));
+      var r0 = escala(0.25);
+      s.appendChild(svg("line", { class: "spoke", x1: r0 * Math.cos(a), y1: r0 * Math.sin(a) * K, x2: R * Math.cos(a), y2: R * Math.sin(a) * K }));
       var m = (-90 + i * seg) * Math.PI / 180;
-      var t = svg("text", { class: "slabel" + (filtro === c.id ? " on" : ""), x: 195 * Math.cos(m), y: 195 * Math.sin(m) + 4, "text-anchor": "middle" });
-      t.textContent = c.nome.toUpperCase();
+      // topo e base ficam centralizados; os quatro dos lados vão para as bordas, longe do estádio
+      var lado = Math.cos(m) > 0.1 ? 1 : Math.cos(m) < -0.1 ? -1 : 0;
+      var t = svg("text", { class: "slabel" + (filtro === c.id ? " on" : ""),
+        x: lado ? lado * 221 : 0, y: lado ? Math.sin(m) > 0 ? 100 : -92 : 158 * Math.sin(m) + 4,
+        "text-anchor": lado > 0 ? "end" : lado < 0 ? "start" : "middle" });
+      t.textContent = (c.curto || c.nome).toUpperCase();
       t.addEventListener("click", function () { escolher(filtro === c.id ? "todas" : c.id); });
       s.appendChild(t);
     });
+    var sq = svg("g", { transform: "scale(1 " + K + ")" });
     var g = svg("g", { class: "sweep" });
     var a2 = 50 * Math.PI / 180;
     g.appendChild(svg("path", { d: "M0 0 L" + R + " 0 A" + R + " " + R + " 0 0 0 " + (R * Math.cos(a2)) + " " + (-R * Math.sin(a2)) + " Z", fill: "#ff3b55", "fill-opacity": ".13" }));
     g.appendChild(svg("line", { x1: 0, y1: 0, x2: R, y2: 0, stroke: "#ff3b55", "stroke-opacity": ".7", "stroke-width": 1.5 }));
-    s.appendChild(g);
-    s.appendChild(svg("circle", { r: 3, fill: "#ffffff" }));
+    sq.appendChild(g); s.appendChild(sq);
 
     var ids = {}; vis.forEach(function (it) { ids[it.id] = 1; });
     itens.forEach(function (it) {
@@ -247,7 +291,7 @@ h1 span { color: var(--red); }
       var h = hash(it.id);
       var ang = (-90 - seg / 2 + catIndex(it.categoria) * seg + seg * (0.15 + 0.7 * ((h % 1000) / 1000))) * Math.PI / 180;
       var r = Math.max(10, escala(dias) - 5);
-      var x = r * Math.cos(ang), y = r * Math.sin(ang);
+      var x = r * Math.cos(ang), y = r * Math.sin(ang) * 0.78;
       var g2 = svg("g", { class: "blip-g" + (quente === it.id ? " hot" : ""), tabindex: 0, role: "button", "data-id": it.id });
       var title = svg("title", {}); title.textContent = it.titulo; g2.appendChild(title);
       g2.appendChild(svg("circle", { class: "blip-halo", cx: x, cy: y, r: 11 }));
@@ -347,6 +391,11 @@ h1 span { color: var(--red); }
         else { estadoVazio = ["Não deu para carregar as notícias", "Confira a sua internet e abra o app de novo."]; status("Sem conexão", false); render(); }
       });
   }
+  (function () {
+    var im = new Image();
+    im.onload = function () { $("escudo").src = im.src; document.body.classList.add("tem-escudo"); };
+    im.src = "icons/escudo.png";
+  })();
   carregar();
   setInterval(function () { if (!document.hidden) carregar(); }, 5 * 60 * 1000);
   document.addEventListener("visibilitychange", function () { if (!document.hidden) carregar(); });

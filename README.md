@@ -28,3 +28,7 @@ Depois abra `http://localhost:8080`.
 1. Em **Settings > Pages**, escolha **Deploy from a branch**, branch `main`, pasta `/ (root)`.
 2. Em **Settings > Actions > General > Workflow permissions**, marque **Read and write permissions**.
 3. O app fica em `https://SEU-USUARIO.github.io/NOME-DO-REPOSITORIO/`.
+
+## Escudo
+
+O app procura o arquivo `icons/escudo.png` (PNG quadrado, de preferência com fundo transparente) e o mostra ao lado do título. Sem o arquivo, aparece um selo rubro-negro listrado. O escudo é marca registrada do clube e não vem neste repositório: coloque o seu próprio arquivo.
