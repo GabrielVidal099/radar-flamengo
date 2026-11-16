@@ -29,6 +29,10 @@ Depois abra `http://localhost:8080`.
 2. Em **Settings > Actions > General > Workflow permissions**, marque **Read and write permissions**.
 3. O app fica em `https://SEU-USUARIO.github.io/NOME-DO-REPOSITORIO/`.
 
-## Escudo
+## Monograma do clube
 
-O app procura o arquivo `icons/escudo.png` (PNG quadrado, de preferência com fundo transparente) e o mostra ao lado do título. Sem o arquivo, aparece um selo rubro-negro listrado. O escudo é marca registrada do clube e não vem neste repositório: coloque o seu próprio arquivo.
+O selo do cabeçalho usa o monograma CRF em branco (`icons/monograma.png`), o mesmo arquivo que o site oficial do clube serve. Ele pertence ao Clube de Regatas do Flamengo; este é um projeto de torcedor, sem vínculo com o clube. Para trocar por outro arquivo, substitua `icons/monograma.png` por um PNG com fundo transparente.
+
+## Radar 3D
+
+`stadium3d.js` monta o Maracanã em 3D com three.js (copiado em `vendor/`, licença MIT). As medidas vêm do estádio real (campo de 105 x 68 m, casca externa de cerca de 317 x 279 m, duas arquibancadas e cobertura em anel), mas o modelo é construído em código, não é um escaneamento. Sem WebGL, o app mostra o mapa 2D.
