@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Radar do Flamengo</title>
+<meta name="description" content="Radar de notícias do Flamengo: manchetes de várias fontes, por editoria e por recência.">
+<meta name="theme-color" content="#150c0e">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Radar Fla">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..900&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+html { color-scheme: light dark; }
+:root { padding: env(safe-area-inset-top,0px) 0 env(safe-area-inset-bottom,0px); }
+body { margin: 0; }
+img { max-width: 100%; }
+[hidden] { display: none !important; }
+/* Layout: a tela de radar fica fixa à esquerda (centro = agora, borda = 7 dias, setores = editorias);
+   o feed corre à direita. No celular, radar em cima e feed embaixo. */
+:root {
+  --bg: #f5f1f0;
+  --surface: #ffffff;
+  --ink: #1a1113;
+  --muted: #6d5f62;
+  --line: #e2d9d8;
+  --red: #c20e2b;
+  --red-ink: #ffffff;
+  --chip: #ebe4e3;
+  --radar-bg: #150c0e;
+  --radar-line: rgba(255, 235, 238, .16);
+  --radar-text: #cbbcbf;
+  --radar-blip: #ff3b55;
+  --display: "Archivo", "Arial Narrow", Arial, sans-serif;
+  --body: "Archivo", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #100a0b; --surface: #1b1214; --ink: #f4ecec; --muted: #a89a9d;
+    --line: #2e2124; --red: #f0314b; --red-ink: #14090b; --chip: #261a1d;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #100a0b; --surface: #1b1214; --ink: #f4ecec; --muted: #a89a9d;
+  --line: #2e2124; --red: #f0314b; --red-ink: #14090b; --chip: #261a1d;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--ink);
+  font-family: var(--body); font-size: 16px; line-height: 1.5;
+}
+.wrap {
+  max-width: 1120px; margin: 0 auto; padding-block: 28px 56px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+
+/* Cabeçalho */
+.top { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 12px 24px; }
+h1 {
+  margin: 0; font-family: var(--display); font-stretch: 78%; font-weight: 900;
+  font-size: clamp(2.4rem, 7vw, 4rem); line-height: .92; text-transform: uppercase; letter-spacing: -.01em;
+}
+h1 span { color: var(--red); }
+.status { font-family: var(--mono); font-size: .78rem; color: var(--muted); display: flex; align-items: center; gap: 8px; }
+.dot { width: 8px; height: 8px; border-radius: 50%; background: var(--muted); flex: none; }
+.dot.live { background: var(--red); animation: pulse 2s ease-in-out infinite; }
+@keyframes pulse { 50% { opacity: .35; } }
+.stripes { height: 10px; margin-top: 18px; background: repeating-linear-gradient(90deg, var(--red) 0 48px, var(--ink) 48px 96px); }
+
+/* Grade principal */
+.grid { display: grid; grid-template-columns: minmax(0, 400px) minmax(0, 1fr); gap: 36px; margin-top: 28px; align-items: start; }
+.radar-col { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 16px); }
+.radar { background: var(--radar-bg); border-radius: 6px; padding: 8px; }
+.radar svg { display: block; width: 100%; height: auto; }
+.ring { fill: none; stroke: var(--radar-line); }
+.spoke { stroke: var(--radar-line); }
+.rlabel { fill: var(--radar-text); font-family: var(--mono); font-size: 9px; opacity: .75; }
+.slabel { fill: var(--radar-text); font-family: var(--display); font-stretch: 80%; font-weight: 700; font-size: 11.5px; letter-spacing: .08em; cursor: pointer; }
+.slabel.on { fill: var(--radar-blip); }
+.sweep { transform-origin: 0 0; animation: spin 7s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.blip { fill: var(--radar-blip); cursor: pointer; transition: opacity .2s; }
+.blip.dim { opacity: .18; }
+.blip-halo { fill: none; stroke: var(--radar-blip); stroke-width: 1.5; opacity: 0; pointer-events: none; }
+.blip-g.hot .blip-halo { opacity: .9; }
+.blip-g:focus-visible { outline: none; }
+.blip-g:focus-visible .blip-halo { opacity: 1; stroke: #fff; }
+.legend { margin: 10px 2px 0; font-size: .8rem; color: var(--muted); }
+
+/* Feed */
+.tools { display: flex; flex-direction: column; gap: 12px; }
+.search {
+  width: 100%; font: inherit; color: var(--ink); background: var(--surface);
+  border: 1px solid var(--line); border-radius: 4px; padding: 10px 12px;
+}
+.search:focus-visible, .chip:focus-visible, .news a:focus-visible { outline: 2px solid var(--red); outline-offset: 2px; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip {
+  font: inherit; font-size: .82rem; font-weight: 600; color: var(--ink); background: var(--chip);
+  border: 0; border-radius: 999px; padding: 6px 12px; cursor: pointer;
+}
+.chip b { font-family: var(--mono); font-weight: 400; color: var(--muted); margin-left: 4px; }
+.chip[aria-pressed="true"] { background: var(--red); color: var(--red-ink); }
+.chip[aria-pressed="true"] b { color: inherit; opacity: .8; }
+
+.feed { list-style: none; margin: 18px 0 0; padding: 0; }
+.news { padding: 18px 0; border-top: 1px solid var(--line); min-width: 0; scroll-margin-top: 80px; }
+.news.hot { box-shadow: inset 3px 0 0 var(--red); padding-left: 12px; }
+.meta { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; font-family: var(--mono); font-size: .72rem; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
+.cat { color: var(--red); font-weight: 500; }
+.rep { color: var(--ink); font-weight: 500; }
+.new { background: var(--red); color: var(--red-ink); padding: 0 6px; border-radius: 2px; }
+.news h2 { margin: 6px 0 4px; font-family: var(--display); font-stretch: 88%; font-weight: 800; font-size: 1.3rem; line-height: 1.18; text-wrap: balance; }
+.news a { color: inherit; text-decoration: none; }
+.news a:hover { color: var(--red); text-decoration: underline; text-underline-offset: 3px; }
+.news p { margin: 0; color: var(--muted); max-width: 65ch; overflow-wrap: anywhere; }
+.empty { padding: 28px 0; border-top: 1px solid var(--line); color: var(--muted); max-width: 60ch; }
+.empty strong { color: var(--ink); display: block; font-family: var(--display); font-size: 1.15rem; margin-bottom: 4px; }
+.note { margin-top: 8px; font-size: .85rem; color: var(--muted); }
+
+@media (max-width: 820px) {
+  .grid { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+  .radar-col { position: static; max-width: 440px; margin: 0 auto; width: 100%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sweep, .dot.live { animation: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="top">
+      <h1>Radar do <span>Flamengo</span></h1>
+      <div class="status"><span class="dot" id="dot"></span><span id="status">Buscando notícias…</span></div>
+    </div>
+    <div class="stripes" aria-hidden="true"></div>
+  </header>
+
+  <div class="grid">
+    <aside class="radar-col">
+      <div class="radar">
+        <svg id="radar" viewBox="-225 -225 450 450" role="img" aria-label="Radar das notícias: quanto mais perto do centro, mais recente"></svg>
+      </div>
+      <p class="legend">Cada ponto é uma notícia. No centro, as de agora; na borda, as de 7 dias atrás. Toque em um ponto para ir até ela.</p>
+    </aside>
+
+    <main>
+      <div class="tools">
+        <input class="search" id="busca" type="search" placeholder="Buscar por jogador, jornalista ou fonte" aria-label="Buscar notícias">
+        <div class="chips" id="chips"></div>
+      </div>
+      <ul class="feed" id="feed"></ul>
+      <div class="empty" id="empty">
+        <strong>Varrendo o noticiário…</strong>
+        As manchetes do Mengão aparecem aqui, da mais recente para a mais antiga, com link para a matéria original.
+      </div>
+      <p class="note" id="note" hidden></p>
+    </main>
+  </div>
+</div>
+
+<script>
+(function () {
+  var CATS = [
+    { id: "jogo", nome: "Jogo" },
+    { id: "mercado", nome: "Mercado" },
+    { id: "elenco", nome: "Elenco" },
+    { id: "bastidores", nome: "Bastidores" },
+    { id: "feminino", nome: "Feminino e base" },
+    { id: "outros", nome: "+ Esportes" }
+  ];
+  var R = 165, DIAS = 7, SVGNS = "http://www.w3.org/2000/svg";
+  var $ = function (id) { return document.getElementById(id); };
+  var itens = [], filtro = "todas", termo = "", ultimaVisita = 0, quente = null;
+
+  try { ultimaVisita = Number(localStorage.getItem("radar:visita")) || 0; } catch (e) {}
+  try { filtro = localStorage.getItem("radar:filtro") || "todas"; } catch (e) {}
+
+  function el(tag, cls, txt) { var n = document.createElement(tag); if (cls) n.className = cls; if (txt != null) n.textContent = txt; return n; }
+  function svg(tag, attrs) { var n = document.createElementNS(SVGNS, tag); for (var k in attrs) n.setAttribute(k, attrs[k]); return n; }
+  function tempo(it) { var t = Date.parse(it.publicadoEm || it.capturadoEm || ""); return isNaN(t) ? 0 : t; }
+  function hash(s) { var h = 0; for (var i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) >>> 0; return h; }
+  function catIndex(id) { for (var i = 0; i < CATS.length; i++) if (CATS[i].id === id) return i; return CATS.length - 1; }
+  function ha(t) {
+    if (!t) return "";
+    var m = Math.max(0, Math.round((Date.now() - t) / 60000));
+    if (m < 60) return "há " + Math.max(1, m) + " min";
+    var h = Math.round(m / 60); if (h < 24) return "há " + h + " h";
+    var d = Math.round(h / 24); return d === 1 ? "ontem" : "há " + d + " dias";
+  }
+  function dataCerta(it) {
+    var d = new Date(tempo(it)), o = { day: "2-digit", month: "2-digit" };
+    if (!it.semHora) { o.hour = "2-digit"; o.minute = "2-digit"; }
+    try { return d.toLocaleString("pt-BR", o).replace(",", ""); } catch (e) { return d.toISOString().slice(0, 10); }
+  }
+  function urlSegura(u) { try { var x = new URL(u); return x.protocol === "https:" || x.protocol === "http:" ? x.href : null; } catch (e) { return null; } }
+
+  function visiveis() {
+    var q = termo.trim().toLowerCase();
+    return itens.filter(function (it) {
+      if (filtro !== "todas" && CATS[catIndex(it.categoria)].id !== filtro) return false;
+      if (!q) return true;
+      return (it.titulo + " " + (it.resumo || "") + " " + (it.fonte || "") + " " + (it.jornalista || "")).toLowerCase().indexOf(q) >= 0;
+    });
+  }
+
+  // Escala logarítmica: as primeiras horas ocupam mais espaço que os últimos dias.
+  function escala(dias) { return R * Math.log(1 + dias * 24) / Math.log(1 + DIAS * 24); }
+
+  function desenharRadar(vis) {
+    var s = $("radar"); s.textContent = "";
+    var seg = 360 / CATS.length;
+    [0.25, 1, 3, 7].forEach(function (d) {
+      var r = escala(d);
+      s.appendChild(svg("circle", { class: "ring", r: r }));
+      var t = svg("text", { class: "rlabel", x: 4, y: -r + 11 }); t.textContent = d < 1 ? "6 h" : d === 1 ? "24 h" : d + " dias"; s.appendChild(t);
+    });
+    CATS.forEach(function (c, i) {
+      var a = (-90 - seg / 2 + i * seg) * Math.PI / 180;
+      s.appendChild(svg("line", { class: "spoke", x1: 0, y1: 0, x2: R * Math.cos(a), y2: R * Math.sin(a) }));
+      var m = (-90 + i * seg) * Math.PI / 180;
+      var t = svg("text", { class: "slabel" + (filtro === c.id ? " on" : ""), x: 195 * Math.cos(m), y: 195 * Math.sin(m) + 4, "text-anchor": "middle" });
+      t.textContent = c.nome.toUpperCase();
+      t.addEventListener("click", function () { escolher(filtro === c.id ? "todas" : c.id); });
+      s.appendChild(t);
+    });
+    var g = svg("g", { class: "sweep" });
+    var a2 = 50 * Math.PI / 180;
+    g.appendChild(svg("path", { d: "M0 0 L" + R + " 0 A" + R + " " + R + " 0 0 0 " + (R * Math.cos(a2)) + " " + (-R * Math.sin(a2)) + " Z", fill: "#ff3b55", "fill-opacity": ".13" }));
+    g.appendChild(svg("line", { x1: 0, y1: 0, x2: R, y2: 0, stroke: "#ff3b55", "stroke-opacity": ".7", "stroke-width": 1.5 }));
+    s.appendChild(g);
+    s.appendChild(svg("circle", { r: 3, fill: "#ffffff" }));
+
+    var ids = {}; vis.forEach(function (it) { ids[it.id] = 1; });
+    itens.forEach(function (it) {
+      var t = tempo(it); if (!t) return;
+      var dias = Math.min(DIAS, Math.max(0, (Date.now() - t) / 864e5));
+      var h = hash(it.id);
+      var ang = (-90 - seg / 2 + catIndex(it.categoria) * seg + seg * (0.15 + 0.7 * ((h % 1000) / 1000))) * Math.PI / 180;
+      var r = Math.max(10, escala(dias) - 5);
+      var x = r * Math.cos(ang), y = r * Math.sin(ang);
+      var g2 = svg("g", { class: "blip-g" + (quente === it.id ? " hot" : ""), tabindex: 0, role: "button", "data-id": it.id });
+      var title = svg("title", {}); title.textContent = it.titulo; g2.appendChild(title);
+      g2.appendChild(svg("circle", { class: "blip-halo", cx: x, cy: y, r: 11 }));
+      g2.appendChild(svg("circle", { cx: x, cy: y, r: 14, fill: "transparent" }));
+      g2.appendChild(svg("circle", { class: "blip" + (ids[it.id] ? "" : " dim"), cx: x, cy: y, r: 5.5 }));
+      var ir = function () { irPara(it.id); };
+      g2.addEventListener("click", ir);
+      g2.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); ir(); } });
+      s.appendChild(g2);
+    });
+  }
+
+  function irPara(id) {
+    var it = itens.filter(function (x) { return x.id === id; })[0]; if (!it) return;
+    if (visiveis().indexOf(it) < 0) { filtro = "todas"; termo = ""; $("busca").value = ""; }
+    quente = id; render();
+    var li = document.querySelector('.news[data-id="' + CSS.escape(id) + '"]');
+    if (li) li.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "center" });
+  }
+
+  function escolher(id) { filtro = id; try { localStorage.setItem("radar:filtro", id); } catch (e) {} render(); }
+
+  function desenharChips() {
+    var box = $("chips"); box.textContent = "";
+    var cont = {}; itens.forEach(function (it) { var c = CATS[catIndex(it.categoria)].id; cont[c] = (cont[c] || 0) + 1; });
+    [{ id: "todas", nome: "Todas" }].concat(CATS).forEach(function (c) {
+      var n = c.id === "todas" ? itens.length : (cont[c.id] || 0);
+      var b = el("button", "chip", c.nome); b.type = "button"; b.id = "chip-" + c.id;
+      b.setAttribute("aria-pressed", String(filtro === c.id));
+      b.appendChild(el("b", null, String(n)));
+      b.addEventListener("click", function () { escolher(c.id); });
+      box.appendChild(b);
+    });
+  }
+
+  function desenharFeed(vis) {
+    var ul = $("feed"); ul.textContent = "";
+    vis.forEach(function (it) {
+      var li = el("li", "news" + (quente === it.id ? " hot" : "")); li.dataset.id = it.id;
+      var meta = el("div", "meta");
+      meta.appendChild(el("span", "cat", CATS[catIndex(it.categoria)].nome));
+      if (it.fonte) meta.appendChild(el("span", null, it.fonte));
+      if (it.jornalista) meta.appendChild(el("span", "rep", "Apuração: " + it.jornalista));
+      meta.appendChild(el("span", null, it.publicadoEm ? dataCerta(it) + " · " + ha(tempo(it)) : "data não informada"));
+      var cap = Date.parse(it.capturadoEm || "");
+      if (ultimaVisita && cap > ultimaVisita) meta.appendChild(el("span", "new", "novo"));
+      li.appendChild(meta);
+      var h = el("h2"); var u = urlSegura(it.url);
+      if (u) { var a = el("a", null, it.titulo); a.href = u; a.target = "_blank"; a.rel = "noopener noreferrer"; h.appendChild(a); }
+      else h.textContent = it.titulo;
+      li.appendChild(h);
+      if (it.resumo) li.appendChild(el("p", null, it.resumo));
+      ul.appendChild(li);
+    });
+    var vazio = $("empty");
+    if (vis.length) { vazio.hidden = true; return; }
+    vazio.hidden = false; vazio.textContent = "";
+    if (itens.length) { vazio.appendChild(el("strong", null, "Nada nesse filtro")); vazio.appendChild(document.createTextNode("Tente outra editoria ou limpe a busca.")); }
+    else { vazio.appendChild(el("strong", null, estadoVazio[0])); vazio.appendChild(document.createTextNode(estadoVazio[1])); }
+  }
+
+  var estadoVazio = ["Varrendo o noticiário…", "As manchetes do Mengão aparecem aqui, da mais recente para a mais antiga, com link para a matéria original."];
+
+  function render() {
+    var vis = visiveis();
+    desenharChips(); desenharRadar(vis); desenharFeed(vis);
+  }
+
+  function status(txt, vivo) { $("status").textContent = txt; $("dot").classList.toggle("live", !!vivo); }
+  function nota(txt) { var n = $("note"); n.hidden = !txt; n.textContent = txt || ""; }
+
+  $("busca").addEventListener("input", function (e) { termo = e.target.value; render(); });
+  render();
+
+  function aplicar(dados) {
+    var lista = (dados && dados.noticias) || [];
+    itens = lista.map(function (x) { return {
+      id: String(x.id), titulo: String(x.titulo || "Sem título"), resumo: x.resumo ? String(x.resumo) : "",
+      fonte: x.fonte ? String(x.fonte) : "", url: x.url, jornalista: x.jornalista ? String(x.jornalista) : "", categoria: String(x.categoria || "outros"),
+      semHora: !!x.semHora, publicadoEm: x.publicadoEm || null, capturadoEm: x.capturadoEm || null }; });
+    itens.sort(function (a, b) { return tempo(b) - tempo(a); });
+    var ult = Date.parse((dados && dados.atualizadoEm) || "") || 0;
+    if (!itens.length) estadoVazio = ["Nenhuma notícia no radar ainda", "A próxima varredura automática roda em até 30 minutos."];
+    status(ult ? itens.length + " notícias · última varredura " + ha(ult) : "Radar no ar", true);
+    render();
+  }
+  var carregouUmaVez = false;
+  function carregar() {
+    return fetch("noticias.json?t=" + Date.now(), { cache: "no-store" })
+      .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+      .then(function (d) {
+        nota(""); aplicar(d);
+        if (!carregouUmaVez) { carregouUmaVez = true; try { localStorage.setItem("radar:visita", String(Date.now())); } catch (e) {} }
+      })
+      .catch(function () {
+        if (itens.length) { nota("Sem conexão: mostrando as últimas notícias salvas."); status("Sem conexão", false); }
+        else { estadoVazio = ["Não deu para carregar as notícias", "Confira a sua internet e abra o app de novo."]; status("Sem conexão", false); render(); }
+      });
+  }
+  carregar();
+  setInterval(function () { if (!document.hidden) carregar(); }, 5 * 60 * 1000);
+  document.addEventListener("visibilitychange", function () { if (!document.hidden) carregar(); });
+  if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js").catch(function () {});
+})();
+</script>
+</body>
+</html>
