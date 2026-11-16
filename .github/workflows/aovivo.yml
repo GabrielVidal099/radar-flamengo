@@ -13,9 +13,9 @@ on:
 permissions:
   contents: write
 
-# o mesmo grupo do outro robô: os dois gravam no repositório, então esperam a vez um do outro
+# fila própria: assim o robô de 5 minutos nunca atrasa nem cancela o de notícias e dados
 concurrency:
-  group: atualizar-noticias
+  group: avisos
   cancel-in-progress: false
 
 jobs:
@@ -45,5 +45,4 @@ jobs:
           git add dados/avisos.json
           git diff --cached --quiet && exit 0
           git commit -m "Atualiza avisos"
-          git pull --rebase origin main
-          git push
+          for i in 1 2 3 4; do git pull --rebase origin main && git push && break; sleep $((i * 3)); done
