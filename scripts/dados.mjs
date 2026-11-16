@@ -1,6 +1,8 @@
 // Coleta jogos, tabela, elenco e detalhes de partidas do Flamengo e grava em dados/*.json.
 // Fonte: endpoints públicos da ESPN (sem chave). Roda no Node 20 ou mais novo: node scripts/dados.mjs
 import { readFile, writeFile, mkdir, readdir } from "node:fs/promises";
+import { VERSAO, num, detalharResumo } from "../espn.js";
+import { calendarioIcs } from "../calendario.js";
 
 const TIME = "819"; // id do Flamengo na ESPN
 const BASE = "https://site.api.espn.com/apis";
@@ -16,12 +18,6 @@ const FASES = {
   "Fifth Round": "Quinta fase", "Taça Guanabara": "Taça Guanabara", "Taça Guanabara - Quarterfinals": "Taça Guanabara · quartas",
   "Taça Guanabara - Semifinals": "Taça Guanabara · semifinal", "Taça Guanabara - Final": "Taça Guanabara · final",
 };
-const ESTATISTICAS = [
-  ["possessionPct", "Posse de bola", "%"], ["totalShots", "Finalizações"], ["shotsOnTarget", "Finalizações no alvo"],
-  ["blockedShots", "Chutes bloqueados"], ["wonCorners", "Escanteios"], ["totalPasses", "Passes"], ["passPct", "Precisão de passes", "pct"],
-  ["totalCrosses", "Cruzamentos"], ["totalTackles", "Desarmes"], ["interceptions", "Interceptações"], ["totalClearance", "Cortes"],
-  ["saves", "Defesas"], ["foulsCommitted", "Faltas"], ["offsides", "Impedimentos"], ["yellowCards", "Cartões amarelos"], ["redCards", "Cartões vermelhos"],
-];
 
 async function pegar(url, tentativas = 3) {
   let erro;
@@ -38,7 +34,6 @@ async function pegar(url, tentativas = 3) {
 }
 async function lerJson(url, padrao) { try { return JSON.parse(await readFile(url, "utf8")); } catch { return padrao; } }
 const gravar = (url, obj) => writeFile(url, JSON.stringify(obj) + "\n");
-const num = (v) => { const n = Number(String(v ?? "").replace("+", "")); return Number.isFinite(n) ? n : 0; };
 const escudo = (id) => `https://a.espncdn.com/combiner/i?img=/i/teamlogos/soccer/500/${id}.png&w=96&h=96`;
 
 function time(c) {
@@ -75,61 +70,8 @@ function normalizarEvento(e) {
   return j;
 }
 
-function eventosDaPartida(x, jogadores) {
-  const por = (id) => jogadores.get(String(id));
-  return (x.keyEvents || []).flatMap((k) => {
-    const t = (k.type && k.type.type) || "", p = (k.participants || []).map((q) => q.athlete).filter(Boolean);
-    const base = { min: (k.clock && k.clock.displayValue) || "", seg: (k.clock && k.clock.value) || 0, periodo: (k.period && k.period.number) || 1, time: k.team ? String(k.team.id) : "" };
-    const nome = (a) => (a ? a.displayName || a.fullName : "");
-    if (/own-goal/.test(t)) return [{ ...base, tipo: "gol-contra", jogador: nome(p[0]) }];
-    if (/penalty/.test(t) && /(scored|goal)/.test(t) && !/miss|saved/.test(t)) return [{ ...base, tipo: "gol-penalti", jogador: nome(p[0]), assist: "" }];
-    if (/penalty/.test(t) && /(miss|saved)/.test(t)) return [{ ...base, tipo: "penalti-perdido", jogador: nome(p[0]) }];
-    if (/^goal/.test(t) && !k.shootout) return [{ ...base, tipo: "gol", jogador: nome(p[0]), assist: nome(p[1]) }];
-    if (t === "yellow-card") return [{ ...base, tipo: "amarelo", jogador: nome(p[0]) }];
-    if (t === "red-card" || t === "yellow-red-card") return [{ ...base, tipo: "vermelho", jogador: nome(p[0]) }];
-    if (t === "substitution") return [{ ...base, tipo: "troca", entra: nome(p[0]), sai: nome(p[1]) }];
-    if (t === "var" || /var/.test(t)) return [{ ...base, tipo: "var", texto: k.text || k.shortText || "" }];
-    return [];
-  });
-}
-
-const VERSAO = 2; // aumente quando o formato dos detalhes mudar: as partidas antigas são buscadas de novo
-
 async function detalharPartida(id, jogo) {
-  const x = await pegar(`${BASE}/site/v2/sports/soccer/all/summary?event=${id}`);
-  const nomes = new Map();
-  const times = (x.rosters || []).map((r) => {
-    const lista = (r.roster || []).map((q) => {
-      const a = q.athlete || {}, s = Object.fromEntries((q.stats || []).map((v) => [v.name, num(v.value)]));
-      nomes.set(String(a.id), a);
-      return {
-        id: String(a.id), nome: a.displayName || a.fullName || "", curto: a.shortName || "", n: q.jersey || "", pos: (q.position && q.position.abbreviation) || "",
-        titular: !!q.starter, entrou: !!q.subbedIn, saiu: !!q.subbedOut,
-        gols: s.totalGoals || 0, assist: s.goalAssists || 0, amarelos: s.yellowCards || 0, vermelhos: s.redCards || 0, defesas: s.saves || 0, golsSofridos: s.goalsConceded || 0,
-        finalizacoes: s.totalShots || 0, noAlvo: s.shotsOnTarget || 0, faltas: s.foulsCommitted || 0, jogou: s.appearances ? 1 : 0, lugar: num(q.formationPlace),
-      };
-    });
-    return { id: String(r.team.id), formacao: r.formation || "", jogadores: lista };
-  });
-  const stats = ESTATISTICAS.map(([chave, nome, tipo]) => {
-    const v = (x.boxscore && x.boxscore.teams || []).map((t) => {
-      const e = (t.statistics || []).find((s) => s.name === chave); return e ? num(e.displayValue) : null;
-    });
-    const ordem = (x.boxscore && x.boxscore.teams || []).map((t) => String(t.team.id));
-    return { nome, tipo: tipo || "", valores: Object.fromEntries(ordem.map((t, i) => [t, tipo === "pct" && v[i] !== null ? Math.round(v[i] * 100) : v[i]])) };
-  }).filter((s) => Object.values(s.valores).some((v) => v !== null));
-  const h2h = (x.seasonseries || []).find((s) => s.type === "head-to-head");
-  return {
-    v: VERSAO, id: String(id), ...jogo, eventos: eventosDaPartida(x, nomes), times, stats,
-    publico: x.gameInfo && x.gameInfo.attendance ? x.gameInfo.attendance : null,
-    confronto: h2h ? {
-      
-      jogos: (h2h.events || []).slice(0, 5).map((e) => {
-        const cs = e.competitors || [], c = cs.find((q) => q.homeAway === "home") || cs[0], f = cs.find((q) => q.homeAway === "away") || cs[1];
-        return { data: e.date, casaId: String(c.id || (c.team && c.team.id)), foraId: String(f.id || (f.team && f.team.id)), casa: (c.team && (c.team.abbreviation || c.team.displayName)) || "", fora: (f.team && (f.team.abbreviation || f.team.displayName)) || "", golsCasa: num(c.score), golsFora: num(f.score) };
-      }),
-    } : null,
-  };
+  return detalharResumo(await pegar(`${BASE}/site/v2/sports/soccer/all/summary?event=${id}`), jogo);
 }
 
 async function tabela() {
@@ -197,6 +139,23 @@ async function main() {
   const PAISES = { Brazil: "Brasil", Argentina: "Argentina", Uruguay: "Uruguai", Chile: "Chile", Colombia: "Colômbia", Peru: "Peru", Ecuador: "Equador", Paraguay: "Paraguai", Venezuela: "Venezuela", Bolivia: "Bolívia", Spain: "Espanha", Italy: "Itália", Portugal: "Portugal", France: "França", Germany: "Alemanha", Mexico: "México", Panama: "Panamá", Netherlands: "Países Baixos" };
   const cm = (t) => { const m = /(\d+)'\s*(\d+)?/.exec(t || ""); return m ? Math.round((Number(m[1]) * 12 + Number(m[2] || 0)) * 2.54) : null; };
   const kg = (t) => { const m = /(\d+)\s*lbs/.exec(t || ""); return m ? Math.round(Number(m[1]) * 0.4536) : null; };
+  // contagem de cartões no Brasileirão, jogo a jogo
+  const cartoes = new Map(), ligaJogos = resultados.filter((j) => j.competicao === "Brasileirão").reverse();
+  let ultimaLiga = null;
+  for (const j of ligaJogos) {
+    const d = await lerJson(new URL(`${j.id}.json`, PARTIDAS), null); if (!d) continue;
+    const meu = (d.times || []).find((t) => t.id === TIME); if (!meu) continue;
+    ultimaLiga = j.id;
+    for (const p of meu.jogadores) {
+      const c = cartoes.get(p.id) || { total: 0, serie: 0, suspenso: "" };
+      c.suspenso = ""; // a suspensão do jogo anterior já foi cumprida neste
+      if (p.vermelhos > 0) c.suspenso = "expulso";
+      else if (p.amarelos > 0) { c.total += p.amarelos; c.serie += p.amarelos; if (c.serie >= 3) { c.serie = 0; c.suspenso = "3º amarelo"; } }
+      cartoes.set(p.id, c);
+    }
+    // quem não entrou na súmula nesse jogo cumpriu a suspensão (se tinha) e a perde
+    for (const [id, c] of cartoes) if (!meu.jogadores.some((p) => p.id === id)) c.suspenso = "";
+  }
   const POS = { G: "Goleiro", D: "Defensor", M: "Meio-campista", F: "Atacante" };
   const jogadores = (elenco.athletes || []).map((a) => {
     const lesoes = (a.injuries || []).map((i) => i.status || i.type || "").filter(Boolean);
@@ -205,10 +164,12 @@ async function main() {
       pos: (a.position && a.position.abbreviation) || "", posicao: POS[(a.position && a.position.abbreviation) || ""] || (a.position && a.position.displayName) || "",
       idade: a.age || null, nascimento: a.dateOfBirth ? a.dateOfBirth.slice(0, 10) : "", pais: PAISES[a.citizenship] || a.citizenship || "", bandeira: (a.flag && a.flag.href) || "",
       alturaCm: cm(a.displayHeight), pesoKg: kg(a.displayWeight), lesao: lesoes[0] || "", foto: `https://a.espncdn.com/i/headshots/soccer/players/full/${a.id}.png`,
+      cartoes: (() => { const c = cartoes.get(String(a.id)); return c ? { amarelos: c.total, serie: c.serie, pendurado: c.serie === 2 && !c.suspenso, suspenso: c.suspenso } : { amarelos: 0, serie: 0, pendurado: false, suspenso: "" }; })(),
       temporada: soma.get(String(a.id)) || { jogos: 0, gols: 0, assist: 0, amarelos: 0, vermelhos: 0, defesas: 0, golsSofridos: 0, semGol: 0 },
     };
   }).sort((a, b) => num(a.camisa) - num(b.camisa));
 
+  await writeFile(new URL("../calendario.ics", import.meta.url), calendarioIcs(proximos, (t) => (times[t.id] && times[t.id].nome) || t.nome || t.sigla));
   await gravar(new URL("jogos.json", PASTA), { time: TIME, proximos, resultados });
   if (tab) await gravar(new URL("tabela.json", PASTA), tab);
   await gravar(new URL("elenco.json", PASTA), { jogadores });

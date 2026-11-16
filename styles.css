@@ -270,3 +270,34 @@ button.jog:hover { background: var(--chip); }
 .nota { color: var(--muted); font-size: .8rem; padding: 0 4px; }
 
 @media (prefers-reduced-motion: reduce) { .sweep { animation: none; } }
+
+/* ---- ao vivo, corrida pelo título, botões, avisos ---- */
+.aovivo { display: inline-flex; align-items: center; gap: 6px; color: var(--loss); font-weight: 800; font-size: .72rem; letter-spacing: .04em; }
+.aovivo i { width: 8px; height: 8px; border-radius: 50%; background: currentColor; display: block; animation: pulsa 1.4s ease-in-out infinite; }
+@keyframes pulsa { 50% { opacity: .25; } }
+.prox-top b.aovivo { color: var(--loss); }
+.jogo-d b.aovivo { display: flex; color: var(--loss); font-size: .7rem; }
+.lin b.av { color: var(--loss); }
+.status.vivo { color: var(--loss); font-weight: 700; }
+.status.vivo i { background: var(--loss); animation: pulsa 1.4s ease-in-out infinite; }
+.corrida-t { margin: 0; padding: 0 16px; font-size: 1.2rem; font-weight: 800; letter-spacing: -.01em; line-height: 1.25; }
+.corrida-s { margin: 0; padding: 4px 16px 12px; color: var(--muted); font-size: .85rem; }
+.cenarios { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; padding: 0 16px 14px; }
+.cenarios div { background: var(--chip); border-radius: 10px; padding: 9px 6px; text-align: center; }
+.cenarios b { display: block; font-size: 1.05rem; font-weight: 800; }
+.cenarios span { font-size: .68rem; color: var(--muted); font-weight: 600; line-height: 1.25; display: block; }
+.riv { display: flex; align-items: center; gap: 10px; padding: 9px 16px; border-top: 1px solid var(--line); font-size: .85rem; }
+.riv .n { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-weight: 700; }
+.riv span:not(.n) { color: var(--muted); font-size: .76rem; }
+.riv b { font-weight: 800; }
+.rodape-nota { margin: 0; padding: 8px 16px 14px; color: var(--muted); font-size: .74rem; }
+.pend { color: var(--warn); font-weight: 700; font-style: normal; }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 16px; border-radius: 10px; border: 0; background: var(--chip); color: var(--ink); font-weight: 700; font-size: .88rem; cursor: pointer; text-decoration: none; }
+.btn:disabled { opacity: .6; cursor: progress; }
+.btn.pri { background: var(--accent); color: var(--accent-ink); }
+.acoes { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: 14px; }
+.txt { margin: 0 0 10px; }
+.txt.peq { font-size: .8rem; color: var(--muted); margin-top: 10px; }
+.passos { margin: 0; padding-left: 20px; display: grid; gap: 6px; font-size: .9rem; }
+.passos a { color: var(--accent); font-weight: 700; }
+code { background: var(--chip); border-radius: 5px; padding: 1px 5px; font-size: .85em; }

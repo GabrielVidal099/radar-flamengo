@@ -39,3 +39,14 @@ O selo do cabeçalho usa o monograma CRF em branco (`icons/monograma.png`), o me
 ## Radar 3D
 
 `stadium3d.js` monta o Maracanã em 3D com three.js (copiado em `vendor/`, licença MIT). As medidas vêm do estádio real (campo de 105 x 68 m, casca externa de cerca de 317 x 279 m, duas arquibancadas e cobertura em anel), mas o modelo é construído em código, não é um escaneamento. Sem WebGL, o app mostra o mapa 2D.
+
+## Ao vivo, avisos e calendário
+
+- **Ao vivo:** durante uma partida o app consulta a ESPN direto a cada 20 segundos e mostra placar, minuto, lances, escalações e estatísticas.
+- **Avisos no celular (ntfy):** o workflow `Avisos e jogo ao vivo` roda a cada 5 minutos e envia escalação, bola rolando, gols, fim de jogo e notícias importantes. Para ligar:
+  1. Em **Settings > Secrets and variables > Actions**, crie o segredo `NTFY_TOPIC` com um nome longo e difícil de adivinhar (ele funciona como uma senha).
+  2. Instale o app ntfy e assine esse mesmo nome.
+  3. Em **Actions > Avisos e jogo ao vivo > Run workflow**, marque `teste` para receber um aviso de teste.
+  Sem o segredo, o workflow não envia nada.
+- **Calendário:** `calendario.ics` é gerado a cada atualização. Assine em `webcal://gabrielvidal099.github.io/radar-flamengo/calendario.ics`.
+- **Cartões:** suspensos e pendurados são estimados pelos jogos da temporada (3 amarelos suspendem e a contagem não zera no Brasileirão).

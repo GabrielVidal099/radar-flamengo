@@ -1,6 +1,6 @@
 // Guarda o app para abrir sem internet. As notícias sempre tentam a rede primeiro.
-const CACHE = "radar-v4";
-const CASCA = ["./", "index.html", "styles.css", "app.js", "radar.js", "stadium3d.js", "vendor/three.module.min.js", "icons/monograma.png", "noticias.json", "dados/jogos.json", "dados/tabela.json", "dados/elenco.json", "dados/times.json", "manifest.webmanifest", "icons/icon-192.png", "icons/icon-512.png"];
+const CACHE = "radar-v5";
+const CASCA = ["./", "index.html", "styles.css", "app.js", "radar.js", "espn.js", "calendario.js", "stadium3d.js", "vendor/three.module.min.js", "icons/monograma.png", "noticias.json", "dados/jogos.json", "dados/tabela.json", "dados/elenco.json", "dados/times.json", "manifest.webmanifest", "icons/icon-192.png", "icons/icon-512.png"];
 
 self.addEventListener("install", (e) => {
   e.waitUntil(caches.open(CACHE).then((c) => c.addAll(CASCA)).then(() => self.skipWaiting()));

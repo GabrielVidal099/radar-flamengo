@@ -30,7 +30,8 @@ jobs:
         run: |
           git config user.name "radar-bot"
           git config user.email "radar-bot@users.noreply.github.com"
-          git add noticias.json dados
+          git add noticias.json calendario.ics dados
           git diff --cached --quiet && exit 0
           git commit -m "Atualiza notícias"
+          git pull --rebase origin main
           git push

@@ -1,0 +1,49 @@
+name: Avisos e jogo ao vivo
+
+on:
+  schedule:
+    - cron: "*/5 * * * *"
+  workflow_dispatch:
+    inputs:
+      teste:
+        description: "Enviar apenas um aviso de teste"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+# o mesmo grupo do outro robô: os dois gravam no repositório, então esperam a vez um do outro
+concurrency:
+  group: atualizar-noticias
+  cancel-in-progress: false
+
+jobs:
+  avisos:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Enviar aviso de teste
+        if: ${{ inputs.teste }}
+        env:
+          NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
+        run: node scripts/avisos.mjs --teste
+      - name: Verificar jogo e notícias
+        if: ${{ !inputs.teste }}
+        env:
+          NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
+        run: node scripts/avisos.mjs
+      - name: Salvar estado dos avisos
+        if: ${{ !inputs.teste }}
+        run: |
+          git config user.name "radar-bot"
+          git config user.email "radar-bot@users.noreply.github.com"
+          git add dados/avisos.json
+          git diff --cached --quiet && exit 0
+          git commit -m "Atualiza avisos"
+          git pull --rebase origin main
+          git push
