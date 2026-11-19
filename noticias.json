@@ -1,5 +1,5 @@
 {
- "atualizadoEm": "2026-11-19T16:30:23Z",
+ "atualizadoEm": "2026-11-19T16:45:18Z",
  "noticias": [
   {
    "id": "2026-11-19-flamengo-tem-ajuda-de-ex-presidente-para-acelera",
@@ -30,6 +30,16 @@
    "categoria": "bastidores",
    "publicadoEm": "2026-11-19T16:00:00Z",
    "capturadoEm": "2026-11-19T16:15:17Z"
+  },
+  {
+   "id": "2026-11-19-em-alta-no-flamengo-varela-se-declara-minha-segu",
+   "titulo": "Em alta no Flamengo, Varela se declara: ‘Minha segunda casa’",
+   "resumo": "",
+   "fonte": "O Dia",
+   "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxNRV84NU16ZklCMmgxdkhJYmpzdGxVZTd0Q09KeV80YmpIUU9NbS0tMGhiSGN1b1VOcG9ORldZT2VWNV9IejVzRlBFZlRpNVhsRnZUQmlsa2lDZ0hYOGhWbE5mLVRkWHU3bHo5SURoMnZsWEtUeHlaa3QzUVV3TDV3Zk9oYXlHSlZIT1pkbnFtYW5SNTR4THg3S2VkSHJXSnh4Q0E0WkRJSVlsZmNuX3dXVlRsYnN4eDJM0gG-AUFVX3lxTE5hVktndUJZdkpyLWdzM01jNDFIQmJkNlp3SWJDMjRRaGY5UFpOY2oxYVFFLWdsdEMwRUxaa2FlYkFYNnlGbmZXQVdmXy1MMldYMWVDWlNYMEZTYlNsYUlGSXlNQjdwTF8tbW1YRnA2aG03R29OSlRSZnhuM0h5Vm1NWVluZ3Z4bUNRMW91a0MwMklBUFFXMFV4dDI5VkZ0aUFKbzZUZ1F5aHNBQzdaR2s0azRQWENFbGJZQlBiSmc?oc=5",
+   "categoria": "bastidores",
+   "publicadoEm": "2026-11-19T15:54:04Z",
+   "capturadoEm": "2026-11-19T16:45:18Z"
   },
   {
    "id": "2026-11-19-amazon-oferece-valor-astronomico-ao-flamengo-par",
@@ -172,6 +182,16 @@
    "capturadoEm": "2026-11-19T14:00:33Z"
   },
   {
+   "id": "2026-11-19-flamengo-deve-receber-trofeu-de-campeao-apenas-n",
+   "titulo": "Flamengo deve receber troféu de campeão apenas na última rodada",
+   "resumo": "",
+   "fonte": "O Dia",
+   "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxQNW9VVjRvcXk2VmU3TkZyLWV3OURoRFJGS0dpV2p0SG9hdzhTd2NCbFRGNGxjZ3B4TUIwSHRISVVEVDNibml0dnRxQ3M2WUc4R2RMdWM5Mjc5LVZXSGtuNmdQVWRmRkpVMWhWd1NjeDV2RXM5SW56TUlJM0RHekRsVms5ZElvNGRFRXV3QnhoVkxNSDllV1B0UFlKTXo5dmF6Q0hhdUJYODNic2hjMlB1OWxuYmd4VkZpMHNBQmFmSzFNUdIBxwFBVV95cUxOUlI5dGpUZ2ZDWXZsTUpzOXNLNTc4WURlaFVyMG9Qdm92aTBSQTZvTDNtOWgxaEtkcS0zWEhHaklvX01GVVF6YS1YUl9hV3hmZ3pWbWRDZm5xWnhJMXR2T1lmWVFEZnJ0d3dkZWp2YjN1dk90UzZpdW1IU3F5WWJtMFVtNzlLdS1SQzViVjVQM0hhVDN6TXd5VVFfaUFWMnJXY2NMRGFlMmVSRkZaUElXV3pBbDFNVGtyUTcwTWl6VGVWR2hYZDFN?oc=5",
+   "categoria": "jogo",
+   "publicadoEm": "2026-11-19T13:40:33Z",
+   "capturadoEm": "2026-11-19T16:45:18Z"
+  },
+  {
    "id": "2026-11-19-fala-de-odair-hellmann-irrita-torcedores-do-flam",
    "titulo": "Fala de Odair Hellmann irrita torcedores do Flamengo: 'Não vi'",
    "resumo": "",
@@ -182,6 +202,16 @@
    "capturadoEm": "2026-11-19T14:00:33Z"
   },
   {
+   "id": "2026-11-19-flamengo-minimiza-prejuizo-mas-tera-desfalques-c",
+   "titulo": "Flamengo minimiza prejuízo, mas terá desfalques contra o Palmeiras",
+   "resumo": "",
+   "fonte": "O Dia",
+   "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxPRGo3YUxsMXZ4eFo5Zk91Q2thQllGZjJDR29Nd2lhZi1pUUI1WDNLWmtja0RlbnF3Q2dWWDQxR3pIejhhUlI1VlUtVjhhMHo3M05hSjloanR3alNmX18zOWF5blQzRFJFRkV3WFBnYUZOQ21XTENaVV9sUjgyM2ZQQnE4eEN5M3JxZGI5SEVub2pBVVoySEgyYkpmeU9IVmhCdVl0b29jSGRJM3JxQ0Fac2JzeXR4TkpoNy1rX29mSENsUElT0gHKAUFVX3lxTE1UcDZrUENGaExrb0FUWUpkT1ZOaExpSUExWU9EOUs0UGRDQzVmd1ZuS29HN2oxcFpKTlRJdV80QWczSUpIMVA5X2pmWWhtTkNCUTBIVWxMdEhGZnZRQnF5d05mbjMxcXEycjZhTmpsdFNSOVFVSEtxNmItYmdRSGQ0ak1qM29nc2xQckRWNkZYTHBUanduQVhFemVBUzJyWmtJZ0pMcTl1QUY4WlBTQmlJOWFnWWQtOV9oMlFFdTloU0gzWlBWUzJETXc?oc=5",
+   "categoria": "jogo",
+   "publicadoEm": "2026-11-19T13:05:00Z",
+   "capturadoEm": "2026-11-19T16:45:18Z"
+  },
+  {
    "id": "2026-11-19-palmeiras-x-flamengo-data-hora-antevisao-e-favor",
    "titulo": "Palmeiras x Flamengo: data, hora, antevisão e favorito no jogo do título",
    "resumo": "",
@@ -190,6 +220,16 @@
    "categoria": "jogo",
    "publicadoEm": "2026-11-19T13:00:48Z",
    "capturadoEm": "2026-11-19T13:15:17Z"
+  },
+  {
+   "id": "2026-11-19-flamengo-atinge-98-de-chances-de-titulo-e-pode-s",
+   "titulo": "Flamengo atinge 98% de chances de título e pode ser campeão com empate",
+   "resumo": "",
+   "fonte": "O Dia",
+   "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxOWHdRZVVITzhtRWRrMWVMZDd3OXI4YVFZeDZIRlNvTEVKd3M4dlZkX29xeHFKVmhzVnNwZ3ZuQkIxTENtaTlhc0p2MWhpM2VISTJsTFcyYnQxY0xrRnI0c0QyclRLcHBKR3c3UDV5LUYxRXh6WWFQS2c0RndNTm5NV2EzY3E3cURLV05LWUktckFqTnJjdW9UQlkyRlIySHZQb2ZxTlJDNFJydlZZUGwzS0tJM0NRbmMyQ1BKOHBsOTdjQWVuaDA3M0hNNNIB0AFBVV95cUxONENqUVNmM01jZkdQRlF6U3pBMnlhbERPQzUtS1dVNDktSHhPVE1ETlQ4UGRnZ1UzVHNxNGs1QkJrMHFkVm13bFM5YzR0SzdobHRBVTFZcFVDUXVTamtkelJ3UjRrRDF5dC1TWWFEN1d3RElfcFlCMXI5V2VsT1M3SUFWSXFEXzlTMTBoV3N2Q2xDMzVrTXhicmtyYjlKaGRtaWNUZ1NJLXNKMmM3dFhVbWtPTHFKOXI3bGVKTGJGMTAtZ0tWWkpaalh0a2NEU3Zw?oc=5",
+   "categoria": "bastidores",
+   "publicadoEm": "2026-11-19T12:35:00Z",
+   "capturadoEm": "2026-11-19T16:45:18Z"
   },
   {
    "id": "2026-11-19-analise-virtual-campeao-flamengo-chega-a-final-q",
