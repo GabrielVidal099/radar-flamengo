@@ -1,5 +1,5 @@
 {
- "atualizadoEm": "2026-11-25T12:45:21Z",
+ "atualizadoEm": "2026-11-25T13:00:29Z",
  "noticias": [
   {
    "id": "2026-11-25-erick-pulgar-vai-a-favela-da-rocinha-em-dia-de-f",
@@ -420,6 +420,16 @@
    "categoria": "bastidores",
    "publicadoEm": "2026-11-24T17:13:41Z",
    "capturadoEm": "2026-11-24T17:30:22Z"
+  },
+  {
+   "id": "2026-11-24-videos-do-flamengo-na-tv",
+   "titulo": "Vídeos do Flamengo na TV",
+   "resumo": "",
+   "fonte": "ge",
+   "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxOUmcyT3VWT050NklJNzJTN2trSXJ6WW90RUZlVXltWEI4bUh2M3RNcmdiZEgtNFh1NWVpZXcxTTZVZHNEMHhXM24xVm5BR1BCNlRFeUxoNU13Uy1kd2hsWnAxc2lSaHgtT0NxOFBGcWpWN1B1Rm9sSjlRTkplV2xWWDB0NG55ck0zLWpaSXZRM1g?oc=5",
+   "categoria": "bastidores",
+   "publicadoEm": "2026-11-24T16:51:00Z",
+   "capturadoEm": "2026-11-25T13:00:29Z"
   },
   {
    "id": "2026-11-24-jogadores-do-flamengo-querem-retorno-de-rogerio",
@@ -5512,16 +5522,6 @@
    "categoria": "bastidores",
    "publicadoEm": "2026-11-15T19:27:00Z",
    "capturadoEm": "2026-11-16T17:16:42Z"
-  },
-  {
-   "id": "2026-11-16-douglas-santos",
-   "titulo": "Caminho livre por Douglas Santos após recuo do Zenit",
-   "resumo": "O Flamengo tenta se antecipar no planejamento para 2027. O clube também administra dez contratos que vencem até 2027 e uma previsão de déficit.",
-   "fonte": "Bolavip",
-   "url": "https://br.bolavip.com/flamengo/zenit-recua-em-renovacao-e-abre-caminho-para-o-flamengo-fechar-com-douglas-santos",
-   "categoria": "mercado",
-   "publicadoEm": "2026-11-15T12:49:26Z",
-   "capturadoEm": "2026-11-16T16:00:00Z"
   }
  ]
 }
