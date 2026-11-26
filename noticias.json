@@ -1,5 +1,5 @@
 {
- "atualizadoEm": "2026-11-26T12:15:22Z",
+ "atualizadoEm": "2026-11-26T12:30:25Z",
  "noticias": [
   {
    "id": "2026-11-26-coritiba-tera-reforcos-contra-o-flamengo-em-busc",
@@ -20,6 +20,16 @@
    "categoria": "jogo",
    "publicadoEm": "2026-11-26T10:52:36Z",
    "capturadoEm": "2026-11-26T11:45:20Z"
+  },
+  {
+   "id": "2026-11-26-torcedor-do-flamengo-provoca-suarez-em-tunel-de",
+   "titulo": "Torcedor do Flamengo provoca Suárez em túnel de acesso aos vestiários do Maracanã, confira o vídeo",
+   "resumo": "",
+   "fonte": "Gazeta Esportiva",
+   "url": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxNeTNnSkRjWFh1Qk0zVmlCdF9Qdi1xaGZKM2l1VlBXUkxHb3laYXFDc0hpdFF4SE1WRVR0dWROWERueTZVT05ZYnVBTEszTmY3Zk9va01jT1N2N2VmRWQxZy11bnV2a05yNEJpQVcwNTFjTXBONkl3WVU2SzBjOWszNTNuMGlhQ3FKcnlmX0RKLW1GTFZ4WjA0Ym9ZLXZYcWlyaUNabkhPWkFBcjI5cndIRzJpM29vN0hMTS1ZbGxDSGhHaG5FcmhiUERBRFFyYzNyamxGb2lnM1fSAdgBQVVfeXFMTXkzZ0pEY1hYdUJNM1ZpQnRfUHYtcWhmSjNpdVZQV1JMR295WmFxQ3NIaXRReEhNVkVUdHVkTlhEbnk2VU9OWWJ1QUxLM05mN2ZPb2tNY09TdjdlZkVkMWctdW51dmtOcjRCaUFXMDUxY01wTjZJd1lVNkswYzlrMzUzbjBpYUNxSnJ5Zl9ESi1tRkxWeFowNGJvWS12WHFpcmlDWm5IT1pBQXIyOXJ3SEcyaTNvbzdITE0tWWxsQ0hoR2huRXJoYlBEQURRcmMzcmpsRm9pZzNX?oc=5",
+   "categoria": "bastidores",
+   "publicadoEm": "2026-11-26T10:50:30Z",
+   "capturadoEm": "2026-11-26T12:30:25Z"
   },
   {
    "id": "2026-11-26-flamengo-traca-planejamento-para-2027-e-define-p",
@@ -5942,26 +5952,6 @@
    "categoria": "elenco",
    "publicadoEm": "2026-11-16T13:00:00Z",
    "capturadoEm": "2026-11-16T17:16:42Z"
-  },
-  {
-   "id": "2026-11-16-joaquin-freitas-revela-ajuda-dos-gringos-em-adap",
-   "titulo": "Joaquín Freitas revela ajuda dos gringos em adaptação ao Flamengo",
-   "resumo": "",
-   "fonte": "O Dia",
-   "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxNWE92MzR0UnZKN3dWdFV1b1BQQ0QzTWIyRWVQYW44TjFfTkZVLTh3VEJQUk8ya18ybG9lTkZkdjB4c09WOEJyYlFfOGc5ZmlCUUlKdTNTbUxhRHYyV1VUUm55ZHhObjVzU3l5Q3RmR3BKaXhFUTVJUjJPMW5xTlZQWTdHQ0Y3QXVtNU1fekNnTmZybnBsUFppX0Jya0RyaUhyNzNEU1FQNTQzRXpRN2xWcDZDb3JUYVBrU2NrSENxbWhiYWhP0gHKAUFVX3lxTFBLelJaeXFfZTd0a3VuVVpSTUtfOGIyTjVRYk1mWFlxV3BmTGtIT3d3dUdKRGtyajNIVXFvbGJsYjBhbDdWWk1rTkFJNjc3Z2hDcHBSZUtKeWROT3c3ZGZCd25HZ1Q0bXdsMk1abDZHSXQ2eTZjQ1ZJWEhhZW1pTUJGbmpsOVo1YTN5czZrWW50SFJfaWVWci1FSXVEVzRpNVVtcnF1dEdNUFE3eFRldk82allFcDU1cXFYRm1LWU1EMnRoTVJkTVFtX3c?oc=5",
-   "categoria": "bastidores",
-   "publicadoEm": "2026-11-16T12:28:00Z",
-   "capturadoEm": "2026-11-16T17:16:42Z"
-  },
-  {
-   "id": "2026-11-16-patrocinio-master",
-   "titulo": "Flamengo rediscute patrocínio máster e pode ter prejuízo acima do previsto",
-   "resumo": "",
-   "fonte": "iGaming Brazil",
-   "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxORDFBakYzVzBxVWItU2dIZmRIMmE5N0RMQndsZGNZVjU4ZUlvV1VGSm1jVDFKazZhMy10MzJ5TTVfcFVTZFQ0RGxJbjA1RWJpb3pkUnYzQXhPdXZuallRUWUwdDQ5WVMycHdKb3o3dUZBSmpmV2R3UXZweEZuY0VGeWtXTFRzX3l3eHphaUlPMW9QS3VITkNRZkJFNE1Sa2FVYThSLUVKbnVNa3dsTjNpeDZ5WWNzWkQycXM4bVJ4SmJTc2tVR01VSA?oc=5",
-   "categoria": "bastidores",
-   "publicadoEm": "2026-11-16T12:24:27Z",
-   "capturadoEm": "2026-11-16T17:05:00Z"
   }
  ]
 }
