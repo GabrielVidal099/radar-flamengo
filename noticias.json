@@ -1,5 +1,5 @@
 {
- "atualizadoEm": "2026-11-26T17:30:22Z",
+ "atualizadoEm": "2026-11-26T17:45:17Z",
  "noticias": [
   {
    "id": "2026-11-26-flamengo-pi-contrata-wildinho-como-coordenador-t",
@@ -10,6 +10,16 @@
    "categoria": "mercado",
    "publicadoEm": "2026-11-26T16:49:08Z",
    "capturadoEm": "2026-11-26T17:15:17Z"
+  },
+  {
+   "id": "2026-11-26-flamengo-anuncia-rescisao-de-jogador-antes-de-de",
+   "titulo": "Flamengo anuncia rescisão de jogador antes de decisão continental",
+   "resumo": "",
+   "fonte": "LANCE!",
+   "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxNa3oyV1YwSXN4dEktN01UUm5DSzNVUVE1ZWY1LWNkMVVQMTlNNU5jMkxIYmZDb1lWbDJmcFVzUXNudzl5WDVELUpFY2RlamNWcENPS0xFUXJQWERzSFN1aE9IMDhIcHpWSDV3MWJYN0kybFdPQUF5UmlaeXNXUVFSTllJZFJtaU4zLWNCNlJ1M1dOWk5zV2tNX1NmVzVoZUJW?oc=5",
+   "categoria": "bastidores",
+   "publicadoEm": "2026-11-26T16:36:00Z",
+   "capturadoEm": "2026-11-26T17:45:17Z"
   },
   {
    "id": "2026-11-26-flamengo-define-prazo-para-resolver-situacao-de",
@@ -5972,16 +5982,6 @@
    "categoria": "bastidores",
    "publicadoEm": "2026-11-16T17:54:32Z",
    "capturadoEm": "2026-11-16T18:12:43Z"
-  },
-  {
-   "id": "2026-11-16-ultimos-videos-do-flamengo",
-   "titulo": "Últimos vídeos do Flamengo",
-   "resumo": "",
-   "fonte": "ge",
-   "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxNaXZ3RGVNVlZ3Qnd4cVJMalViZWVMbUdQa1RiT0doSTVUSnRaaS1Ob254MmZzbU9YeFB5dm9yUWF2bnVnMmtJbHNVYTVTNExFOFZzOS1RUlYzVFhBSEhWeHFpR0RLeXBUUWd1TXVkRW5IUXpWdWxhT21reEJrUzhZbFpET3FZVDU4Z2Jab1NR?oc=5",
-   "categoria": "bastidores",
-   "publicadoEm": "2026-11-16T17:45:00Z",
-   "capturadoEm": "2026-11-17T11:00:26Z"
   }
  ]
 }
