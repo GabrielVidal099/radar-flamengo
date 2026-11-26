@@ -1,5 +1,5 @@
 {
- "atualizadoEm": "2026-11-26T15:15:20Z",
+ "atualizadoEm": "2026-11-26T15:30:24Z",
  "noticias": [
   {
    "id": "2026-11-26-ex-flamengo-carlos-alcaraz-negocia-com-clube-arg",
@@ -260,6 +260,16 @@
    "categoria": "bastidores",
    "publicadoEm": "2026-11-26T01:03:16Z",
    "capturadoEm": "2026-11-26T02:30:32Z"
+  },
+  {
+   "id": "2026-11-26-corinthians-mira-executivo-com-13-titulos-no-fla",
+   "titulo": "Corinthians mira executivo com 13 títulos no Flamengo",
+   "resumo": "",
+   "fonte": "Terra",
+   "url": "https://news.google.com/rss/articles/CBMi7gFBVV95cUxOcVd5eThvSzFERW5Pb2RRYzJqVzVaaE1xVC1Qa0o3M3hmdTJtSHNEdXB6UHFtbjRlRHpSVHdxeWM4c1RrV2dIdEE3dG1ibWJaS0VrWXoxeGcxMS1jRWJaQjhzeW9tYkdPU0txUGJVYXlhVk4ydndhV2owQ3o5VXhSTC02dXpQeUZWMlVzUHhvNnNha21rQjhiYTRidllfcEhFZ0k4Y3NzRTBxY1JDczhBa3YyMHk2emQ3djQ2UHpnbHdNNDBwdnpmRnhMM2ZLSjBiMDZUVDV4ZHhaNk55bFNXWjBvb0pyTFMwSms0U2pn?oc=5",
+   "categoria": "bastidores",
+   "publicadoEm": "2026-11-26T00:24:00Z",
+   "capturadoEm": "2026-11-26T15:30:24Z"
   },
   {
    "id": "2026-11-25-flamengo-quer-contar-com-executivo-ex-braco-dire",
@@ -5951,36 +5961,6 @@
    "url": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxPbk5QZF9GX0s0dkhhMTk3N25TbFAyS0ZzY0ZNWjFwd0RFRWdFOEtqWDZmcU1ETEF4YnRhUzVBQ3Jnd0VFZHYtSVI2WE94YXRKV1MtZXlLMFNTRVpNeWQ0REFOdVRNS2x5NkVhRzg5OTZreVN0VER2WE42eTlQSm56bFhnMGtfZTJZNEJHT3ZibEdKQXF1NWEwVGV3aXFTRzBpWmJlR3QzOWU0X2lKNFpDTG1fMndxTXVzRm5qWl9ZU2VwTlVoVTMtckRDTzVRekFaaVpseFFR?oc=5",
    "categoria": "mercado",
    "publicadoEm": "2026-11-16T15:46:00Z",
-   "capturadoEm": "2026-11-16T17:05:00Z"
-  },
-  {
-   "id": "2026-11-16-zico-jogo-festivo-castelao",
-   "titulo": "Com Zico confirmado, Arena Castelão receberá jogo festivo do Flamengo em dezembro",
-   "resumo": "",
-   "fonte": "URB News",
-   "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxONG9aWF92LTRkU1ZiMFB5SXNXZDJMWUdOUmV5eTR1XzVWOUdFQ1JkU212aHpjSnlnYXY3QnBTWWdFLXRXV0YzVFc2c0FsOGNEU2NYNG9SaG00c1prN0tPekcxYzFOb0RObjlmaVlQdkQyU3Bwc0k3RVRrMFJ3MWhRUEZsWkNHckY1OVBxWF9HM21WR2dZa3JUT2RMaThXYzI4OUFiTXljdHlQTUNlTVNteTV0UGlFdw?oc=5",
-   "categoria": "bastidores",
-   "publicadoEm": "2026-11-16T15:28:00Z",
-   "capturadoEm": "2026-11-16T17:07:20Z"
-  },
-  {
-   "id": "2026-11-16-maracana-marca",
-   "titulo": "Flamengo defende marca 'absurda' no Maracanã em semana decisiva",
-   "resumo": "",
-   "fonte": "Lance",
-   "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxNank0NG5HZWxaWHE1UndEQ3p2a2ROT3FNbFpfQkJCRU9EU3dHVTV6dlNGRlcxQktwdHdvNndzM2ZZVjM2ckw1bjNYSEI2SW1oOW1hdmlLQ01FSWNJS21uY3dXZDBBRlFQWDhCcGR6a3h0WGIwT0otV0UtbE40c0NRRjF0cUV2RlR6MVVBSjhYaGh0NDMxeUV3SmUzLTBmMVhfeEtraTQyMXN2Zmd0aU5zT1BhRkt5SG1jUk80WThYcEFNWkEtM2c?oc=5",
-   "categoria": "jogo",
-   "publicadoEm": "2026-11-16T15:25:00Z",
-   "capturadoEm": "2026-11-16T17:07:20Z"
-  },
-  {
-   "id": "2026-11-16-samuel-lino-premier",
-   "titulo": "Samuel Lino, do Flamengo, desperta interesse de clube da Premier League",
-   "resumo": "",
-   "fonte": "Terra",
-   "url": "https://news.google.com/rss/articles/CBMi7wFBVV95cUxOTkZOUHBOSE9KbktvaDI5RVp0bGZ5QzJzRWJ1c0ZUUHo1QTRKNUxoYkJkTGZHcVhNWm9xVFZkQWd0SUFkYjNTdkt0UE5YZVRNX0Jpa2NJTUVtbDQ3b1lOV1JTUWdCcDZVNEZEOXhBaFBiLU42TFhfaFR3b0dXZm9pWkdaT2xWR2h5VWxabFNYYVJHWlRBSmtMYTlQSVJlV0dFeXBGdzVOaUFiaEZ0RElVS2poMEF1WERlcDlfR1lLWFFXdWl2U1lkYmpVd1FXVFRrMnY3VHQ5MXlWbWlYZkstOWJoUnRDT29JNmxuTEdZNA?oc=5",
-   "categoria": "mercado",
-   "publicadoEm": "2026-11-16T15:24:00Z",
    "capturadoEm": "2026-11-16T17:05:00Z"
   }
  ]
