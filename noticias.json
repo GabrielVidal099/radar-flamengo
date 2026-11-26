@@ -1,6 +1,16 @@
 {
- "atualizadoEm": "2026-11-26T18:45:17Z",
+ "atualizadoEm": "2026-11-26T19:00:26Z",
  "noticias": [
+  {
+   "id": "2026-11-26-lino-maravilha-conheca-a-nova-musica-da-torcida",
+   "titulo": "‘Lino Maravilha’: conheça a nova música da torcida do Flamengo",
+   "resumo": "",
+   "fonte": "Revista PLACAR",
+   "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxOeGV1QnhkcGYwWEh6bUZKbGlEeHhEMldvaUY4ZTVGLXVCX3pJd0lpT2pwU1JIelItRGtvT2VtaE9HVlFnWjZpOU9IREZIZzJSMjYyVWhaN1NmUlc1amtVdG43cXh6LTZsZFBLdWN5S29KX3NmOHpoaUFXdS1ieWxxOFMta1YzanlHOURWQw?oc=5",
+   "categoria": "bastidores",
+   "publicadoEm": "2026-11-26T18:45:35Z",
+   "capturadoEm": "2026-11-26T19:00:26Z"
+  },
   {
    "id": "2026-11-26-flamengo-oferece-cinco-camisas-por-r-395-na-blac",
    "titulo": "Flamengo oferece cinco camisas por R$ 395 na Black Friday rubro-negra",
@@ -5941,26 +5951,6 @@
    "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxOWWhjMURPb2NjNElzVW14SG1Xb184SGJfRGFIVG1QWmNUaW1fZDVKRXJuNG1ucFZqa0lrWEUzOEVOX0pQOGhiSFB6V1ZWWFBoR2UwTmM2WkZjVEpfc3BIMDFPSGRaeGlCd1N6c3BNY051SFJmZFRGWGRZeEtUS0k4UUdfQVdBUGF4RzRV?oc=5",
    "categoria": "bastidores",
    "publicadoEm": "2026-11-16T19:02:00Z",
-   "capturadoEm": "2026-11-16T19:39:32Z"
-  },
-  {
-   "id": "2026-11-16-acreana-participa-de-festa-de-inauguracao-de-bus",
-   "titulo": "Acreana participa de festa de inauguração de bustos de ídolos do Flamengo: “Foi emocionante”",
-   "resumo": "",
-   "fonte": "ge",
-   "url": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxONG5GTkZZZUIzY3V0TnZzRnliUVNyckUyRkQyeHhxYk1Xa1dqT0NVbkpLZkNucWZ5eUVTeG9JT0Z5SVZ2OUR3OXE3RW1UMThNa1R1YTJWRUVXb0dVaWZYRHB0X3lKSFlCSU11WVpZUzh2a2Fya0EzenFFaUxCem5HOVUxV3gxRWFmbEEwLWRFVkdaclkyQV94Yk5oR2RidFBiQ3dJcTJpWEx2a195VjJCZDlfUHBteFM5b1g0SWlkaTVkTmlQQ2d1cG1mR1lmMWJiMy1Ib9IB4wFBVV95cUxOWTlhWVdWNThhY2VucWFkT2lwQUZDX1cxaGNyOXJOZDJwWE9fUzUzLVlGcDVHM25GMmNJdkFFRjlGTThlR0V1SHZZd3JsY3VWaTBEYl80dTQyWGNVQVl4VEhxWnVuemxkT1BORVlDNWhZaURaYWZ3eVdrV0x3bzRBWFg2WjBFQkc1RnJ1NnktSHo3LWFuVTBHZkIzdVplWXlvTTM1TVoxbDN0eXN2eGtXeW9HZm9nV1NLRmRwMVpDOXpfcFlabDJGRWFyTUpJOFA4d2RNX1ZwMXFnUFBFVDdyUWt1cw?oc=5",
-   "categoria": "bastidores",
-   "publicadoEm": "2026-11-16T18:51:09Z",
-   "capturadoEm": "2026-11-16T19:39:32Z"
-  },
-  {
-   "id": "2026-11-16-plata-e-liberado-de-amistoso-do-equador-e-pode-v",
-   "titulo": "Plata é liberado de amistoso do Equador e pode virar reforço do Flamengo contra o Athletico-PR",
-   "resumo": "",
-   "fonte": "ge",
-   "url": "https://news.google.com/rss/articles/CBMi_AFBVV95cUxQaGdkaGRuWU11TWFoVFlpd2lES1FpQnZlRmVIZGlZR3V4NVYyRVRpbzQ5NHloY2s1TVp4OVdXYXR0MGdZRXdBeXVzUGFwRWIzdTBrSUlFcDRPTTk4a2g2NDFGNE9LZzhXeHl0RGFrMW9rZlg4ZkUycEhGdWc5NmxXaTZlN0luc3Q1cXc4ZTVpVE9jTDdiNVNkc2ZFekpLUGtwQlJwV3RSYWxuM0E3SExBdlpPaHdTLXBKbmJScEdBbjJUdWluaVpNYldfS3poWHpDRFZ4MEp0Y3dSMW5MaXpDcV8zdlFmZ3ZiSlg1Mm9RZmFkS2daSzNQVTNEdzjSAYsCQVVfeXFMUFdpZHJucUNxY0xCVkNrSmd3SlBOVTNlc0tyNjhLRkNJQ1hIY2ZKLXE5YURuQjB6a1d1UzBzY2FBcTB2Q0RUSnZDTGFPaG1KTTh4eGQzSHo4RVFTREo3d0wtUlhuaXhWSmU4azdNa3RkMHRaN3FoRGpWUnVaSWJlaWNNdVZjdGkwZGpKZ1ZJNEItWE1rdEV3a1N6SFljRmFxTUU3eHhDbkJNa3JtQ0lsMEo4VXFwbEVUWjlxck9wS1BEZTNZZjExQzM3SDVnWlJLLVBjd2sxTGpfRkFMNUMzVVBxeWpmN2F3OFBseUI0RXBwR1ozV1B1Y2FVS3otUktnVUUtVWRKdWlScFpv?oc=5",
-   "categoria": "mercado",
-   "publicadoEm": "2026-11-16T18:45:56Z",
    "capturadoEm": "2026-11-16T19:39:32Z"
   }
  ]
