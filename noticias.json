@@ -1,5 +1,5 @@
 {
- "atualizadoEm": "2026-11-27T18:00:27Z",
+ "atualizadoEm": "2026-11-27T18:15:17Z",
  "noticias": [
   {
    "id": "2026-11-27-provocou-o-flamengo-leila-pereira-dispara-ao-ser",
@@ -22,6 +22,16 @@
    "capturadoEm": "2026-11-27T18:00:27Z"
   },
   {
+   "id": "2026-11-27-corte-toma-decisao-sobre-ida-do-flamengo-a-final",
+   "titulo": "Corte toma decisão sobre ida do Flamengo à final da Libertadores",
+   "resumo": "",
+   "fonte": "LANCE!",
+   "url": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxNWER4eGtpb1d3X1l6WXQwWTJjVHhzclBpRUdZUlExbDlkRHJidzVjVXJmZWk5NlpiTExnVjBPeEhUOVgxZ0FmdDdIUWtBZnlSak5xZ09JbWFfeXlnaVNWSlFqVk5wT2dqdFBnRGtDd25nY1ZGRmQzQ0NZWnlBOGZTT3hIZWZEa2F2Q25uQ19KMmlvUGdYNkk3QThiXy1hUjVLYUdZS0xNaHhxbGNjZTVuNW9TSHNfcHlGNkoyN0VlSVhqamRDOTQydmRpaVM5SUVnYVE?oc=5",
+   "categoria": "bastidores",
+   "publicadoEm": "2026-11-27T17:41:47Z",
+   "capturadoEm": "2026-11-27T18:15:17Z"
+  },
+  {
    "id": "2026-11-27-na-pele-varela-tatua-tacas-da-libertadores-e-do",
    "titulo": "Na pele! Varela tatua taças da Libertadores e do Brasileirão pelo Flamengo",
    "resumo": "",
@@ -30,6 +40,16 @@
    "categoria": "bastidores",
    "publicadoEm": "2026-11-27T17:41:00Z",
    "capturadoEm": "2026-11-27T18:00:27Z"
+  },
+  {
+   "id": "2026-11-27-leila-pereira-coloca-corinthians-e-sao-paulo-com",
+   "titulo": "Leila Pereira coloca Corinthians e São Paulo como rivais e descarta Flamengo",
+   "resumo": "",
+   "fonte": "ge",
+   "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxOQS1MZjkzV2U0TmNXZVVSa2dnSUJwYmVYdmUtVmM1NXd5MHpGdENKUVYzZnJaT0o2RzBxbXJTcl9xRFkza1lPTjQ5YUlUM0VGcXJBYm1EM2RuY1dFWnRuQUZoTFJYYzRvdlZYMExOSmp4QjY0aVZ6MUptM3lJNVdDM3h6RlloWmdleXlGMzU5UXVEMHYzS0VQOVlvX281MWNrNE9YM1hiYThOdkNTVURDalZYODkySTdXNlHSAcgBQVVfeXFMT1U3OV9KcTAyaFN5NWNQLVJRMElXbFpkclRlRmNldVdBSUluaXRlSVJjaGlxTkxSUFZOZlFjSnVpcTZkd0k1QkpZMHVKaE85U3ZWN1RNWG1meUEyWjk5RGsxSURWVDVHaVVOY1ExU1B4c1l2dlhjQVY4dVNMazlUTXRHYWlOM0M4QmxQVEU5UWFha2Y3bnY3bURMSFJOMVpoZmJUeUNleHNPZjZVVGRnTktwUi1acHJuTEdWTzF2ZzRsVHFEMHNlT3Y?oc=5",
+   "categoria": "bastidores",
+   "publicadoEm": "2026-11-27T16:58:08Z",
+   "capturadoEm": "2026-11-27T18:15:17Z"
   },
   {
    "id": "2026-11-27-escritor-transforma-historia-do-flamengo-em-uma",
@@ -5991,36 +6011,6 @@
    "categoria": "jogo",
    "publicadoEm": "2026-11-17T18:15:43Z",
    "capturadoEm": "2026-11-17T18:30:23Z"
-  },
-  {
-   "id": "2026-11-17-gigante-europeu-prepara-milhoes-por-zagueiro-e-f",
-   "titulo": "Gigante europeu prepara milhões por zagueiro e Flamengo pode negociar",
-   "resumo": "",
-   "fonte": "O Dia",
-   "url": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxOTGc2NG52MTVZSHVLc1FMYzd5LWh2bzgxWldjODJWaTYzQzFLZHNhaHNaRzF1azZsSTBvMmNESXlPcnFsT0NNNjlWbE1Kanc4Mlc2dnBHNFRzVU90VW1WbzFWa293N201cDJxd2NLclFoWHE4XzdkMmR5X2ZNTEk3bG5YV19UbEpja2ZZTmxSVkJUdlZtOENTZ2o5TGVmd0Z4WjNOclpCVDl4WHpkRlBuTTdaVFZHanJrZ0h6TFNtS0cyM2NFV2lybmpnMGk2MHFVYmfSAdcBQVVfeXFMT09NaHVQeXlMSTBSSDc1MTYzSEtSdmNCeVlwam9ZMnpuOUw4TmRLeUR5Um1jUVBiZTF4ZzZrUG5RWXNkZkwzZFFIelpCYnR3MENhcXZnUjNzTXNfZWlrRGd0TmM5c3RoUm1VcHBOSGdyNThoQUtTd0hyUjVOSFEzN1BIdHdhb0tuLXBMLVFsQlg1U3JXQUhLVkJGaDY4ZkQ1VWg4dU9TNHo0SzV2UzRYcEl3bFZlWHFwNmNsQ2pmanZyX0NaOWlFWV9fTWlIME9UaEVkUnBoX0U?oc=5",
-   "categoria": "mercado",
-   "publicadoEm": "2026-11-17T18:11:19Z",
-   "capturadoEm": "2026-11-17T18:30:23Z"
-  },
-  {
-   "id": "2026-11-17-flamengo-e-l-oreal-paris-levam-campanha-contra-o",
-   "titulo": "Flamengo e L’Oréal Paris levam campanha contra o assédio ao Maracanã e convocam torcedores a agir",
-   "resumo": "",
-   "fonte": "Diário do Rio",
-   "url": "https://news.google.com/rss/articles/CBMi7AFBVV95cUxQZzN2b2V5UEUzV25tVUs1SVFDZWpnN2F0RDdrejNTRlRQdmFZX2NlYjM4WFpFNmZtU0tzWFNOaEdtVUlKaDhUUlRLQ2NFN0RoUEwtbkRrWWhER0dTWUZoQkg4UFJaWmRkbWNNZV94X2Z4OE9EVlJoM2VZTFhTZmVZUlBKWWJyTWxsMlV1ekdPeW9FQWhQRVVmdUlUdEctbXVKMkhxYnJrck4yY19UMXBEcDNRZTBUcTYzNWtaMDdualdmaVk2c2lhRE1RMC1oWXd2d2Ewa2t1TGdmY3RsOURqZ21abW5IcVhiZFMwMQ?oc=5",
-   "categoria": "elenco",
-   "publicadoEm": "2026-11-17T18:02:52Z",
-   "capturadoEm": "2026-11-17T18:15:16Z"
-  },
-  {
-   "id": "2026-11-17-ex-tecnico-do-flamengo-ve-paqueta-mal-aproveitad",
-   "titulo": "Ex-técnico do Flamengo vê Paquetá mal aproveitado como meia",
-   "resumo": "",
-   "fonte": "O Dia",
-   "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxOSTc2UmxuOXFIR1VOTEFBWnBEYWY4QVV5MmVoYmNoNjB3WXpvWnNBZld6U1dIVEYyZW5tOFdlVGIxazl1YVNBZTBia1lfcjFDOEU1VU45cFoxQ0dtTjh2YldyZExoWXRtSm83U1ZKSUttRXVpek04ZFE0TU1GLU11c2JFamdMUi1KSlp6S1R0OFBzdmI1amdfVmd0d2xHQmx5M2JZSi1ZRDVtUXY0ejY0ZzBUYjlxYjJKR0xhMNIBwgFBVV95cUxORml4RkZZT2EybmoyNXpyVnAzSVZJZ0IycjJKOUNpMnlGNjF6WnM0SjQtbHNpdGNmYnJObUNweGNnTkNMY050WEx1TWhNcHBaOGNqWXRNNE85TW01ekJTWEhxYklZSDhpVnUyYlFCbjdjYXFjUjVTQ0RYMmQ3SW85Z0x5THFoMk1fbTFlYVE0OTJZZV81X2hVRVd0ZVlPZVdia0xwOGJoV0FtWjM2ZTdqS2twMnJlTC0xMUhTQ21KVTIxdw?oc=5",
-   "categoria": "bastidores",
-   "publicadoEm": "2026-11-17T18:02:02Z",
-   "capturadoEm": "2026-11-17T18:26:39Z"
   }
  ]
 }
