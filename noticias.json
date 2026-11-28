@@ -1,5 +1,5 @@
 {
- "atualizadoEm": "2026-11-28T14:30:24Z",
+ "atualizadoEm": "2026-11-28T14:45:20Z",
  "noticias": [
   {
    "id": "2026-11-28-muslera-algoz-do-flamengo-busca-redencao-em-casa",
@@ -20,6 +20,16 @@
    "categoria": "jogo",
    "publicadoEm": "2026-11-28T12:00:26Z",
    "capturadoEm": "2026-11-28T13:45:18Z"
+  },
+  {
+   "id": "2026-11-28-bruno-henrique-sobre-a-caca-ao-flamengo-temos-tu",
+   "titulo": "Bruno Henrique sobre a ‘caça’ ao Flamengo: “Temos tudo para brigar pelo título”",
+   "resumo": "",
+   "fonte": "Gazeta Esportiva",
+   "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxOTGtfejF0OUlpZWUxaTFnaTdna0ZKR29iYjBSYnBLM3V0NTloTzZTTkRCOHVfeFlBY2w4UU1ZX1BhRWhFNXFQXzRTdEoxQndfVXpnQUxpZ2w2LTVaSHVGMHA2ZVh3a0NEbFBBUTY0X1JVT3dPc0d0N2dSbXp6elYtX1RzUWd4a3JzUFRIRTljWjVlcTVpZUFCU3dzREtlM1R3ZG5LRFBNVGZIY0JsUHJfSnJ2Ty1ESXRNemfSAboBQVVfeXFMTkxrX3oxdDlJaWVlMWkxZ2k3Z2tGSkdvYmIwUmJwSzN1dDU5aE82U05EQjh1X3hZQWNsOFFNWV9QYUVoRTVxUF80U3RKMUJ3X1V6Z0FMaWdsNi01Wkh1RjBwNmVYd2tDRGxQQVE2NF9SVU93T3NHdDdnUm16enpWLV9Uc1FneGtyc1BUSEU5Y1o1ZXE1aWVBQlN3c0RLZTNUd2RuS0RQTVRmSGNCbFByX0pydk8tREl0TXpn?oc=5",
+   "categoria": "bastidores",
+   "publicadoEm": "2026-11-28T11:28:42Z",
+   "capturadoEm": "2026-11-28T14:45:20Z"
   },
   {
    "id": "2026-11-28-pedro-tem-chance-de-repetir-zico-nunes-adriano-e",
@@ -5810,26 +5820,6 @@
    "categoria": "bastidores",
    "publicadoEm": "2026-11-18T14:57:51Z",
    "capturadoEm": "2026-11-18T15:30:25Z"
-  },
-  {
-   "id": "2026-11-18-tecnico-do-equador-comenta-retorno-de-plata-ao-f",
-   "titulo": "Técnico do Equador comenta retorno de Plata ao Flamengo: 'Compreendi'",
-   "resumo": "",
-   "fonte": "O Dia",
-   "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxQSVN1TF9xcHhVRXBwMnlDaTB2SzAzeFRJVUdjWTBwTnB3cHNxY0lwRG1ZUTZua2RhdFdTN2psQkFvVEZNQXluLUw3Um9FbDZjdmtjRXlRSXVaUkVKenhhdEc2Z1VZUklwNnpkSllwRDZMekx3ajdLS2k4MkJ0aHNwN2drNTdaUWI1ckZyVmRuZzJOZ19LZVBTNmZ4aEx3dlh1bWs5SThKNlFreTVZcm93ZjlpY2xSZzJnSFROSkt1amdRd04zVXfSAcsBQVVfeXFMUC1FaEE2a1VEdHptNG81OGFzd1Y5TTJmbHd0Q2FXX2lGRm56U2d1dm85Y3VyaUJrSkhhUENaUWcyM25tejdVcnE3XzM5ZmZkU25JSENqSnV2aHZtTk1Ua1BhOXdTQ1ZHeDVQWUpRdTZJZFdvekNnOW85ZFVjaVU0M3VwcjlDR1pmMUQyVUFUNklyU0QyVmJoZHYweWRTNHh5dFN6STZaeGNYWVBYQnYwOHhVUnh0eVdNR2pFZW5NNDR0azFWMG1hRlBvLW8?oc=5",
-   "categoria": "bastidores",
-   "publicadoEm": "2026-11-18T14:37:17Z",
-   "capturadoEm": "2026-11-18T15:00:27Z"
-  },
-  {
-   "id": "2026-11-18-torcida-do-flamengo-vota-em-pedro-e-filipe-luis",
-   "titulo": "Torcida do Flamengo vota em Pedro e Filipe Luís como favoritos a receberem novos bustos",
-   "resumo": "",
-   "fonte": "ge",
-   "url": "https://news.google.com/rss/articles/CBMi7AFBVV95cUxOSTJ3ZFFldUV4YmE4S1hiMGR2emFvRjA3RVMyRzZuaDVONldIMF9OSnZnY1o5ZzRoZTZPUHNBZmVCZTI5MXA0aGdqX3huUUFpeUEzem5XWERqTFlKNXctT0Z0TVFLYWNtdUFKXzNubG9aWi15SWFvajNtOVBvdnZMMFlvMkRFbW5FY3YxZkV5ZXFrOVhmak16MDdkZGgzY1ZUS0VuQU1OejVtelFBUERJdnJOLXZRZXhaYkVJNTEyVHhzRm5DdC1rMlpPMWo5MmJqRHVsaUo2ZjRQa0dKQUV6MEloSWM2QmctaWpSbNIB-wFBVV95cUxON09TbTM2dFV6Z3FwSVlCR3ZVQm1CRVRaQmdaZTZPc3Zqd2JjUnl6YXdNNEF3Mm5KdzZRQWhmdnh6akVtS1k4alMyQW54ZjI0bm9kME5lNW45M1YybnZlUkRZUGhrcHJ2aHo0Tk1yS0ZQZl9NbUM0ckhWU05yOHhKRHVoNnV4NE5pT29HeVE0aUhlQjJQTUhIQ2JlSDNhY3RKTmdsckphTDJlb1l6clNuMHpzbjdaRnhHMllIUm5tQXZDazFLdm1ScFZLOWp2bE5weUxpakdaMXdpZ016S05WZzlFY0JZTHg2ODIzbVhyVjVvY0tKeXJ5S2lhUQ?oc=5",
-   "categoria": "bastidores",
-   "publicadoEm": "2026-11-18T14:33:01Z",
-   "capturadoEm": "2026-11-18T15:00:27Z"
   }
  ]
 }
